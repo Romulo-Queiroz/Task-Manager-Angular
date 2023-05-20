@@ -3,15 +3,25 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-
-
+import { NavBarComponent } from './nav-bar/nav-bar.component';
+import { TaskListComponent } from './task-list/task-list.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap'
+import { HttpClientModule } from '@angular/common/http';
+import { CreateTaskComponent } from './create-task/create-task.component';
+import {  ReactiveFormsModule  } from '@angular/forms';
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    NavBarComponent,
+    TaskListComponent,
+    CreateTaskComponent,
   ],
   imports: [
+    NgbModule,
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule, // Importação do módulo HttpClientModule
+    ReactiveFormsModule 
   ],
   providers: [],
   bootstrap: [AppComponent]

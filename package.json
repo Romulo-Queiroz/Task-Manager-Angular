@@ -18,6 +18,8 @@
     "@angular/platform-browser": "^16.0.0",
     "@angular/platform-browser-dynamic": "^16.0.0",
     "@angular/router": "^16.0.0",
+    "@ng-bootstrap/ng-bootstrap": "^14.1.1",
+    "@popperjs/core": "^2.11.7",
     "bootstrap": "^5.2.3",
     "jquery": "^3.3.1",
     "popper.js": "^1.14.3",
