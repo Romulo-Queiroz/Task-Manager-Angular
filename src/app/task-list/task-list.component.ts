@@ -28,4 +28,17 @@ export class TaskListComponent {
   openCreateTaskModal() {
     const modalRef = this.modalService.open(CreateTaskComponent);
   }
+
+  deleteTask(taskId: number) {
+    this.http.delete<any>(`http://localhost:5021/deletar/${taskId}`).subscribe(
+      response => {
+        console.log('Tarefa excluída com sucesso:', response);
+        this.ngOnInit();
+      },
+      error => {
+        console.error('Erro ao excluir a tarefa:', error);
+      }
+    );
+  }
+
 }

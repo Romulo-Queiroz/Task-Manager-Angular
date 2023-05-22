@@ -35,12 +35,12 @@ export class CreateTaskComponent {
       CreatedAt: new Date()
     };
 
-    this.http.post<any>('http://localhost:5021/home', newTask).subscribe(
+    this.http.post<any>('http://localhost:5021/inserir', newTask).subscribe(
       response => {
         // Lógica para tratar a resposta do backend após a criação da tarefa
         console.log('Tarefa criada com sucesso:', response);
-        // Fechar o modal após a criação da tarefa
-        // ...
+        
+        this.closeModal();
       },
       error => {
         console.error('Erro ao criar a tarefa:', error);

@@ -1,17 +1,22 @@
 <div class="container">
   <div class="row">
     <div class="col-6">
-      <h2>O que fazer</h2>
-      <div class="tasks"></div>
+      <!-- <h2</h2> -->
+      <button class="btn btn-primary" (click)="openCreateTaskModal()">Criar Tarefa</button>
     </div>
     <div class="col-6">
-      <h2>O que já foi feito</h2>
+      <h2>O que fazer</h2>
       <div class="done">
         <ul>
-          <li *ngFor="let tarefa of tarefasConcluidas">{{ tarefa.title }}</li>
+          <li *ngFor="let tarefa of tarefasConcluidas">
+            <p>{{tarefa.id}}</p>
+            <h4 class="tittle">{{ tarefa.title }}</h4>
+            <p class="description">{{tarefa.description}}</p>
+            <button class="btn btn-danger" (click)="deleteTask(tarefa.id)">Deletar</button>
+          </li>
         </ul>
       </div>
     </div>
   </div>
-  <button class="btn btn-primary" (click)="openCreateTaskModal()">Criar Tarefa</button>
+  <!-- <button class="btn btn-primary" (click)="openCreateTaskModal()">Criar Tarefa</button> -->
 </div>
