@@ -42,4 +42,17 @@ export class TaskListComponent implements OnInit {
       }
     );
   }
+
+  markTaskAsUndone(taskId: number) {
+    this.http.put<any>(`http://localhost:5021/done/${taskId}`, { Done: false }).subscribe(
+      response => {
+        console.log('Tarefa atualizada com sucesso:', response);
+        this.tarefasConcluidas = this.tarefasConcluidas.filter(tarefa => tarefa.id !== taskId);
+      },
+      error => {
+        console.error('Erro ao atualizar a tarefa:', error);
+      }
+    );
+  }
+ 
 }
