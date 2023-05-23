@@ -1,5 +1,5 @@
 <!-- Conteúdo do formulário de criação de tarefas -->
-<form [formGroup]="taskForm" (ngSubmit)="createTask()">
+<form [formGroup]="taskForm">
     <div class="form-group">
       <label for="taskTitle">Título</label>
       <input type="text" class="form-control" id="taskTitle" placeholder="Digite o título da tarefa" formControlName="taskTitle">
@@ -10,7 +10,6 @@
     </div>
     <div class="modal-footer">
       <button type="button" class="btn btn-secondary" (click)="closeModal()">Cancelar</button>
-
       <button type="submit" class="btn btn-primary" (click)="createTask()">Criar Tarefa</button>
     </div>
   </form>

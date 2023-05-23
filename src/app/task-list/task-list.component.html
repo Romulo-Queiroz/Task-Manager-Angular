@@ -1,7 +1,6 @@
 <div class="container">
   <div class="row">
     <div class="col-6">
-      <!-- <h2</h2> -->
       <button class="btn btn-primary" (click)="openCreateTaskModal()">Criar Tarefa</button>
     </div>
     <div class="col-6">
@@ -9,14 +8,13 @@
       <div class="done">
         <ul>
           <li *ngFor="let tarefa of tarefasConcluidas">
-            <p>{{tarefa.id}}</p>
+            <p>#{{tarefa.id}}</p>
             <h4 class="tittle">{{ tarefa.title }}</h4>
-            <p class="description">{{tarefa.description}}</p>
+            <p class="description"> <strong> Description: </strong> {{tarefa.description}}</p>
             <button class="btn btn-danger" (click)="deleteTask(tarefa.id)">Deletar</button>
           </li>
         </ul>
       </div>
     </div>
   </div>
-  <!-- <button class="btn btn-primary" (click)="openCreateTaskModal()">Criar Tarefa</button> -->
 </div>
