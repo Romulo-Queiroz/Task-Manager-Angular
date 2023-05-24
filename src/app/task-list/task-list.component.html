@@ -5,13 +5,14 @@
       <h2>Tarefas feitas</h2>
       <div class="done">
 
-        <ul class="myUl">
-          <li *ngFor="let tarefa of tarefasConcluidas">
+        <ul class="myUl  mb-4">
+          <li *ngFor="let tarefa of tarefasConcluidas" class="class="class="mb-3">
+            <hr class="separar">
             <ng-container *ngIf="tarefa.done !== false">
               <p class="id">#{{ tarefa.id }}</p>
               <h4 class="tittle">{{ tarefa.title }}</h4>
               <p class="description"><strong>Description:</strong> {{ tarefa.description }}</p>
-              <button class="btn btn-danger deletButton" (click)="deleteTask(tarefa.id)">Deletar</button>
+              <button class="btn btn-danger deletButton" (click)="openConfirmationModal(tarefa.id)">Deletar</button>
             </ng-container>
           </li>
         </ul>
@@ -22,7 +23,7 @@
     <div class="col-6">
       <h2>O que fazer</h2>
       <div class="willDo">
-        <ul class="myUl">
+        <ul class="myUl mb-3">
           <li *ngFor="let tarefa of tarefasConcluidas">
             <ng-container *ngIf="tarefa.done === false">
               <p class="id">#{{ tarefa.id }}</p>
@@ -30,7 +31,7 @@
               <p class="description"><strong>Description:</strong> {{ tarefa.description }}</p>
               <div class="button-group">
                 <button class="btn btn-success" (click)="markTaskAsUndone(tarefa.id)">Feito</button>
-                <button class="btn btn-danger" (click)="deleteTask(tarefa.id)">Deletar</button>
+                <button class="btn btn-danger" (click)="openConfirmationModal(tarefa.id)">Deletar</button>
               </div> 
             </ng-container>
           </li>

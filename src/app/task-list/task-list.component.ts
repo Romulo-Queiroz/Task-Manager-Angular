@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { CreateTaskComponent } from '../create-task/create-task.component';
+import { ConfirmationModalComponent } from '../confirmation-modal/confirmation-modal.component';
 
 @Component({
   selector: 'app-task-list',
@@ -31,17 +32,12 @@ export class TaskListComponent implements OnInit {
     const modalRef = this.modalService.open(CreateTaskComponent);
   }
 
-  deleteTask(taskId: number) {
-    this.http.delete<any>(`http://localhost:5021/deletar/${taskId}`).subscribe(
-      response => {
-        console.log('Tarefa excluída com sucesso:', response);
-        this.tarefasConcluidas = this.tarefasConcluidas.filter(tarefa => tarefa.id !== taskId);
-      },
-      error => {
-        console.error('Erro ao excluir a tarefa:', error);
-      }
-    );
+  //create a function to get my modal confirmation-modal and open it
+  openConfirmationModal(taskId: number) {
+    const modalRef = this.modalService.open(ConfirmationModalComponent);
+    modalRef.componentInstance.taskId = taskId;
   }
+  
 
   markTaskAsUndone(taskId: number) {
     this.http.put<any>(`http://localhost:5021/done/${taskId}`, { Done: false }).subscribe(
