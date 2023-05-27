@@ -16,6 +16,10 @@ export class ConfirmationModalComponent {
     this.activeModal.dismiss();
   }
 
+  stopPropagation(event: Event) {
+    event.stopPropagation();
+  }
+  
   deleteTask() {
     this.http.delete<any>(`http://localhost:5021/deletar/${this.taskId}`).subscribe(
       response => {

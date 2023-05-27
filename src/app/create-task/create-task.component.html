@@ -1,16 +1,24 @@
-<!-- Conteúdo do formulário de criação de tarefas -->
-<form [formGroup]="taskForm">
-    <div class="form-group">
-      <label for="taskTitle">Título</label>
-      <input type="text" class="form-control" id="taskTitle" placeholder="Digite o título da tarefa" formControlName="taskTitle">
+<div class="modal-dialog">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h5 class="modal-title">Criar Tarefa</h5>
+      <button type="button" class="btn-close" (click)="closeModal()"></button>
     </div>
-    <div class="form-group">
-      <label for="taskDescription">Descrição</label>
-      <textarea class="form-control" id="taskDescription" rows="3" placeholder="Digite a descrição da tarefa" formControlName="taskDescription"></textarea>
+    <div class="modal-body">
+      <form [formGroup]="taskForm">
+        <div class="mb-3">
+          <label for="taskTitle" class="form-label">Título</label>
+          <input type="text" class="form-control" id="taskTitle" placeholder="Digite o título da tarefa" formControlName="taskTitle">
+        </div>
+        <div class="mb-3">
+          <label for="taskDescription" class="form-label">Descrição</label>
+          <textarea class="form-control" id="taskDescription" rows="3" placeholder="Digite a descrição da tarefa" formControlName="taskDescription"></textarea>
+        </div>
+      </form>
     </div>
     <div class="modal-footer">
       <button type="button" class="btn btn-secondary" (click)="closeModal()">Cancelar</button>
       <button type="submit" class="btn btn-primary" (click)="createTask()">Criar Tarefa</button>
     </div>
-  </form>
-  
+  </div>
+</div>

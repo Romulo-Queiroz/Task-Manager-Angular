@@ -32,11 +32,22 @@ export class TaskListComponent implements OnInit {
     const modalRef = this.modalService.open(CreateTaskComponent);
   }
 
-  //create a function to get my modal confirmation-modal and open it
   openConfirmationModal(taskId: number) {
     const modalRef = this.modalService.open(ConfirmationModalComponent);
     modalRef.componentInstance.taskId = taskId;
+
+    modalRef.result.then(
+      result => {
+        // Lógica a ser executada após fechar o modal, se necessário
+        console.log('Modal fechado:', result);
+      },
+      reason => {
+        // Lógica a ser executada se o modal for fechado por outro motivo, como o clique fora do modal
+        console.log('Modal fechado por motivo:', reason);
+      }
+    );
   }
+
   
 
   markTaskAsUndone(taskId: number) {

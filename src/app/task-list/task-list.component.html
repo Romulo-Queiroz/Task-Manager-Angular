@@ -1,12 +1,11 @@
-<div class="container">
+<div class="container bg-light">
   <div class="row">
     <button class="btn btn-primary" (click)="openCreateTaskModal()">Criar Tarefa</button>
-    <div class="col-6">
+    <div class="col-6 border-right">
       <h2>Tarefas feitas</h2>
       <div class="done">
-
-        <ul class="myUl  mb-4">
-          <li *ngFor="let tarefa of tarefasConcluidas" class="class="class="mb-3">
+        <ul class="myUl mb-4">
+          <li *ngFor="let tarefa of tarefasConcluidas" class="mb-3">
             <hr class="separar">
             <ng-container *ngIf="tarefa.done !== false">
               <p class="id">#{{ tarefa.id }}</p>
@@ -16,9 +15,7 @@
             </ng-container>
           </li>
         </ul>
-        
       </div>
-      
     </div>
     <div class="col-6">
       <h2>O que fazer</h2>
@@ -32,7 +29,7 @@
               <div class="button-group">
                 <button class="btn btn-success" (click)="markTaskAsUndone(tarefa.id)">Feito</button>
                 <button class="btn btn-danger" (click)="openConfirmationModal(tarefa.id)">Deletar</button>
-              </div> 
+              </div>
             </ng-container>
           </li>
         </ul>
