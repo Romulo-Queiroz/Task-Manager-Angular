@@ -23,6 +23,10 @@ git clone https://github.com/Romulo-Queiroz/todoListFront
 ## Aviso
 Você precisa verificar se possui a ultima versão do angular instalado
 
+#### Caso não tenha execute o comando via CLI/npm:
+```bash
+npm i @angular/cli
+```
 # Autor
 <div align="center">
 
