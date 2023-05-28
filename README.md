@@ -5,7 +5,7 @@
 # Iniciando o projeto
 Para rodar o projeto você precisa antes de algumas ferramentas instaladas:
 * Visual Studio (Preferência)
-* ter o  <a href="https://github.com/Romulo-Queiroz/Todo" target="blank">Beckend</a> em sua máquina
+* ter o  <a href="https://github.com/Romulo-Queiroz/Todo" target="blank">Backend</a> em sua máquina
 #### Alguns pacotes do NuGet como:
 * Microsoft.EntityFrameworkCore
 * Microsoft.EntityFrameworkCore.Design
