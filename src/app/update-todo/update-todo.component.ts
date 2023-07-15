@@ -12,9 +12,7 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 export class UpdateTodoComponent {
   taskForm: FormGroup;
   tarefa: any;
-
   taskId!: number;
-
 
   constructor(private http: HttpClient, private formBuilder: FormBuilder, private modalService: NgbModal) {
     this.taskForm = this.formBuilder.group({
@@ -26,12 +24,12 @@ export class UpdateTodoComponent {
   closeModal() {
     this.modalService.dismissAll();
   }
-//edit task   
+
 updateTask() {
   const updatedTask = this.taskForm.value;
   const taskToUpdate = {
-    title: updatedTask.taskTitle, // Usando taskTitle em vez de title
-    description: updatedTask.taskDescription, // Usando taskDescription em vez de description
+    title: updatedTask.taskTitle, 
+    description: updatedTask.taskDescription, 
     done: updatedTask.done
   };
   this.http.put<any>(`http://localhost:5021/change/${this.taskId}`, taskToUpdate).subscribe(
@@ -44,13 +42,11 @@ updateTask() {
       };
       
       this.modalService.dismissAll();
-      console.log('Tarefa atualizada com sucesso:', response);
     },
     error => {
       console.error('Erro ao atualizar a tarefa:', error);
     }
   );
-  console.log('Valor do id: ' + this.taskId);
 }
   
 }

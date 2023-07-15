@@ -24,7 +24,6 @@ export class CreateTaskComponent {
   }
   createTask() {
     if (this.taskForm.invalid) {
-      // Realize ações apropriadas se o formulário for inválido, como exibir mensagens de erro
       return;
     }
 
@@ -36,11 +35,8 @@ export class CreateTaskComponent {
     };
 
     this.http.post<any>('http://localhost:5021/inserir', newTask).subscribe(
-      response => {
-        // Lógica para tratar a resposta do backend após a criação da tarefa
-        console.log('Tarefa criada com sucesso:', response);
-        
-        this.closeModal();
+      response => {   
+       this.closeModal();
       },
       error => {
         console.error('Erro ao criar a tarefa:', error);

@@ -43,11 +43,9 @@ export class TaskListComponent implements OnInit {
 
     modalRef.result.then(
       result => {
-        // Lógica a ser executada após fechar o modal, se necessário
         console.log('Modal fechado:', result);
       },
       reason => {
-        // Lógica a ser executada se o modal for fechado por outro motivo, como o clique fora do modal
         console.log('Modal fechado por motivo:', reason);
       }
     );
@@ -65,7 +63,6 @@ export class TaskListComponent implements OnInit {
             console.log('Modal fechado:', result);
           },
           reason => {
-            // Lógica a ser executada se o modal for fechado por outro motivo, como o clique fora do modal
             console.log('Modal fechado por motivo:', reason);
           }
         );
