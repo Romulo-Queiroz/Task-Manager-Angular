@@ -10,6 +10,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { CreateTaskComponent } from './create-task/create-task.component';
 import {  ReactiveFormsModule  } from '@angular/forms';
 import { ConfirmationModalComponent } from './confirmation-modal/confirmation-modal.component';
+import { UpdateTodoComponent } from './update-todo/update-todo.component';
 
 
 @NgModule({
@@ -19,6 +20,7 @@ import { ConfirmationModalComponent } from './confirmation-modal/confirmation-mo
     TaskListComponent,
     CreateTaskComponent,
     ConfirmationModalComponent,
+    UpdateTodoComponent,
   ],
   imports: [
     NgbModule,

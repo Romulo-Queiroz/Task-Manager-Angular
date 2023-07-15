@@ -4,6 +4,8 @@ import { Router } from '@angular/router';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { CreateTaskComponent } from '../create-task/create-task.component';
 import { ConfirmationModalComponent } from '../confirmation-modal/confirmation-modal.component';
+import { UpdateTodoComponent } from '../update-todo/update-todo.component';
+
 
 @Component({
   selector: 'app-task-list',
@@ -13,7 +15,10 @@ import { ConfirmationModalComponent } from '../confirmation-modal/confirmation-m
 export class TaskListComponent implements OnInit {
   tarefasConcluidas: any[] = [];
 
-  constructor(private http: HttpClient, private router: Router, private modalService: NgbModal) {}
+  constructor(private http: HttpClient, private router: Router, private modalService: NgbModal,
+    
+
+    ) {}
 
   ngOnInit() {
     if (this.tarefasConcluidas.length === 0) {
@@ -47,6 +52,31 @@ export class TaskListComponent implements OnInit {
       }
     );
   }
+  openUpdateTaskModal(taskId: number) {
+    this.http.get<any>(`http://localhost:5021/home/${taskId}`).subscribe(
+      response => {
+        const modalRef = this.modalService.open(UpdateTodoComponent);
+        modalRef.componentInstance.taskId = taskId;
+        modalRef.componentInstance.task = response;
+      
+        modalRef.result.then(
+          result => {
+          
+            console.log('Modal fechado:', result);
+          },
+          reason => {
+            // Lógica a ser executada se o modal for fechado por outro motivo, como o clique fora do modal
+            console.log('Modal fechado por motivo:', reason);
+          }
+        );
+      },
+      error => {
+        console.error('Erro ao obter os dados da tarefa:', error);
+      }
+    );
+  }
+  
+
 
   
 
