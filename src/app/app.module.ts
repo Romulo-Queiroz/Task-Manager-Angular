@@ -11,6 +11,7 @@ import { CreateTaskComponent } from './create-task/create-task.component';
 import {  ReactiveFormsModule  } from '@angular/forms';
 import { ConfirmationModalComponent } from './confirmation-modal/confirmation-modal.component';
 import { UpdateTodoComponent } from './update-todo/update-todo.component';
+import { TaskDoneComponent } from './task-done/task-done.component';
 
 
 @NgModule({
@@ -21,6 +22,7 @@ import { UpdateTodoComponent } from './update-todo/update-todo.component';
     CreateTaskComponent,
     ConfirmationModalComponent,
     UpdateTodoComponent,
+    TaskDoneComponent,
   ],
   imports: [
     NgbModule,
