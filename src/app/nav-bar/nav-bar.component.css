@@ -1,0 +1,12 @@
+/* Center the navigation bar contents */
+.custom-navbar {
+    justify-content: center;
+  }
+  
+  /* Center the links inside the navbar */
+  .custom-navbar-nav {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+  }
+  

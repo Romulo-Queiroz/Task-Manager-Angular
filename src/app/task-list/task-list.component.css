@@ -2,7 +2,9 @@
   list-style: none;
 }
 
-
+h2 {
+  text-align: center;
+}
 .task-list-container {
     display: flex;
     justify-content: space-between;
