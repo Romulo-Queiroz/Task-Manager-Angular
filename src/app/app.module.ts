@@ -12,6 +12,7 @@ import {  ReactiveFormsModule  } from '@angular/forms';
 import { ConfirmationModalComponent } from './confirmation-modal/confirmation-modal.component';
 import { UpdateTodoComponent } from './update-todo/update-todo.component';
 import { TaskDoneComponent } from './task-done/task-done.component';
+import { NgxPaginationModule } from 'ngx-pagination'; 
 
 
 @NgModule({
@@ -25,6 +26,7 @@ import { TaskDoneComponent } from './task-done/task-done.component';
     TaskDoneComponent,
   ],
   imports: [
+    NgxPaginationModule,
     NgbModule,
     BrowserModule,
     AppRoutingModule,

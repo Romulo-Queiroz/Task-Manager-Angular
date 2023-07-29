@@ -6,21 +6,24 @@ import { CreateTaskComponent } from '../create-task/create-task.component';
 import { ConfirmationModalComponent } from '../confirmation-modal/confirmation-modal.component';
 import { UpdateTodoComponent } from '../update-todo/update-todo.component';
 
-
 @Component({
   selector: 'app-task-list',
   templateUrl: './task-list.component.html',
   styleUrls: ['./task-list.component.css']
 })
 export class TaskListComponent implements OnInit {
+  
   tarefasConcluidas: any[] = [];
-
-  constructor(private http: HttpClient, private router: Router, private modalService: NgbModal,
-    
-
-    ) {}
+  tarefasPorPagina = 6; // Defina a quantidade de tarefas que você deseja exibir por página
+  currentPage = 1; // Define a página atual inicial (pode ser 1 ou qualquer outra página inicial)
+  totalPages = this.tarefasConcluidas.length;
+  constructor(private http: HttpClient, private router: Router, private modalService: NgbModal) {}
 
   ngOnInit() {
+    this.carregarTarefasConcluidas();
+  }
+
+  carregarTarefasConcluidas() {
     if (this.tarefasConcluidas.length === 0) {
       this.http.get<any>('http://localhost:5021/home').subscribe(
         response => {
@@ -50,6 +53,7 @@ export class TaskListComponent implements OnInit {
       }
     );
   }
+
   openUpdateTaskModal(taskId: number) {
     this.http.get<any>(`http://localhost:5021/home/${taskId}`).subscribe(
       response => {
@@ -59,7 +63,6 @@ export class TaskListComponent implements OnInit {
       
         modalRef.result.then(
           result => {
-          
             console.log('Modal fechado:', result);
           },
           reason => {
@@ -72,10 +75,6 @@ export class TaskListComponent implements OnInit {
       }
     );
   }
-  
-
-
-  
 
   markTaskAsUndone(taskId: number) {
     this.http.put<any>(`http://localhost:5021/done/${taskId}`, { Done: false }).subscribe(
@@ -88,5 +87,16 @@ export class TaskListComponent implements OnInit {
       }
     );
   }
- 
+
+  previousPage() {
+    if (this.currentPage > 1) {
+      this.currentPage--;
+    }
+  }
+
+  nextPage() {
+    if (this.currentPage < this.totalPages) {
+      this.currentPage++;
+    }
+  }
 }
