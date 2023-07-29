@@ -12,9 +12,10 @@ import {  ReactiveFormsModule  } from '@angular/forms';
 import { ConfirmationModalComponent } from './confirmation-modal/confirmation-modal.component';
 import { UpdateTodoComponent } from './update-todo/update-todo.component';
 import { TaskDoneComponent } from './task-done/task-done.component';
-import { NgxPaginationModule } from 'ngx-pagination'; 
-
-
+import { NgxPaginationModule } from 'ngx-pagination';
+import { LoginComponent } from './login/login.component'; 
+import { FormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router';
 @NgModule({
   declarations: [
     AppComponent,
@@ -24,8 +25,11 @@ import { NgxPaginationModule } from 'ngx-pagination';
     ConfirmationModalComponent,
     UpdateTodoComponent,
     TaskDoneComponent,
+    LoginComponent,
   ],
   imports: [
+    RouterModule,
+    FormsModule,
     NgxPaginationModule,
     NgbModule,
     BrowserModule,
