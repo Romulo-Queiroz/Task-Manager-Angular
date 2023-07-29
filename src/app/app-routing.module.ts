@@ -1,20 +1,16 @@
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
-import { CreateTaskComponent } from './create-task/create-task.component';
+import { Routes, RouterModule } from '@angular/router';
+
+import { LoginComponent } from './login/login.component';
 import { TaskListComponent } from './task-list/task-list.component';
 import { TaskDoneComponent } from './task-done/task-done.component';
-import { LoginComponent } from './login/login.component';
 
 const routes: Routes = [
-  //rota para login
+  // ... outras rotas ...,
   { path: 'login', component: LoginComponent },
-  //rota inicial da aplicação
-  { path: '', redirectTo: 'tasks', pathMatch: 'full' },
-  //rota para o componente CreateTaskComponent
-  { path: 'tasks', component: TaskListComponent },
-  //rota para o componente TaskListComponent
+  { path: 'tasks', component: TaskListComponent }, // Verifique se está definida corretamente.
   { path: 'task-done', component: TaskDoneComponent },
-  // outras rotas existentes...
+  // ... outras rotas ...
 ];
 
 @NgModule({

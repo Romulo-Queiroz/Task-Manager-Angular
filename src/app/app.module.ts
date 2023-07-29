@@ -28,6 +28,7 @@ import { RouterModule } from '@angular/router';
     LoginComponent,
   ],
   imports: [
+    RouterModule.forRoot([]),
     RouterModule,
     FormsModule,
     NgxPaginationModule,
