@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Router } from '@angular/router';
 
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -28,32 +29,36 @@ export class LoginComponent {
     this.modalService.dismissAll();
   }
 
-  onSubmit() {
-    if (this.loginForm.invalid) {
-      return;
-    }
-
+  onSubmit() { 
     const user = {
       username: this.loginForm.value.username,
-      password: this.loginForm.value.password
+      password: this.loginForm.value.password,
+      isLogged: false
     };
-
+  
     this.http.post<any>('http://localhost:5021/Authenticate', user).subscribe(
       response => {
-        if (response.isLogged) {
-          console.log("Usuário logado com sucesso.");
-          // Redirecionar o usuário para a página "Tasks"
+        if (response && response.isLogged === true) {
+          console.log('User logged in successfully');
+          user.isLogged = true;
           this.router.navigate(['/tasks']);
-          
         } else {
-          console.log("Usuário ou senha incorretos.");
+          console.log('Authentication failed');
+          //get div password and show error message
+          var passwordDiv =  document.getElementById('password');
+          if (passwordDiv) {
+            passwordDiv.innerHTML = 'Invalid username or password';
+          }
+          if (this.loginForm.value.password) {
+            this.loginForm.value.password = '';
+          }
         }
       },
       error => {
-        console.error('Erro ao entrar:', error);
+        console.log('HTTP request error:', error);
+        // Handle HTTP request error here (e.g., show error message)
       }
     );
-
-    console.log('Formulário enviado.');
   }
 }
+
