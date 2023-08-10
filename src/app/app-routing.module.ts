@@ -4,15 +4,24 @@ import { Routes, RouterModule } from '@angular/router';
 import { LoginComponent } from './login/login.component';
 import { TaskListComponent } from './task-list/task-list.component';
 import { TaskDoneComponent } from './task-done/task-done.component';
+import { AuthGuard } from 'AuthGuard';
 
 const routes: Routes = [
-  // ... outras rotas ...,
-  { path: 'login', component: LoginComponent },
-  { path: 'tasks', component: TaskListComponent }, // Verifique se está definida corretamente.
-  { path: 'task-done', component: TaskDoneComponent },
-  // ... outras rotas ...
+  { 
+    path: 'tasks', 
+    component: TaskListComponent,
+    canActivate: [AuthGuard] 
+  },
+  { 
+    path: 'task-done', 
+    component: TaskDoneComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'login',
+    component: LoginComponent
+  }
 ];
-
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]

@@ -4,6 +4,7 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ConfirmationModalComponent } from '../confirmation-modal/confirmation-modal.component';
 import { UpdateTodoComponent } from '../update-todo/update-todo.component';
 import { CreateTaskComponent } from '../create-task/create-task.component';
+import { LoginComponent } from '../login/login.component';
 
 @Component({
   selector: 'app-task-done',
@@ -13,6 +14,8 @@ import { CreateTaskComponent } from '../create-task/create-task.component';
 export class TaskDoneComponent {
   constructor(private http: HttpClient, private modalService: NgbModal,
     ) {}
+
+    
 
     ngOnInit() {
       if (this.tarefasConcluidas.length === 0) {

@@ -4,6 +4,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Router } from '@angular/router';
 
+import { NgModule } from '@angular/core';
+import { Routes, RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -21,8 +23,14 @@ export class LoginComponent {
   ) {
     this.loginForm = this.formBuilder.group({
       username: ['', Validators.required],
-      password: ['', Validators.required]
+      password: ['', Validators.required],
+      isLogged: ['', Validators.required]
     });
+    let user = {
+      username: this.loginForm.value.username,
+      password: this.loginForm.value.password,
+      isLogged: false
+    };
   }
 
   closeModal() {
@@ -30,7 +38,7 @@ export class LoginComponent {
   }
 
   onSubmit() { 
-    const user = {
+   let user = {
       username: this.loginForm.value.username,
       password: this.loginForm.value.password,
       isLogged: false
@@ -39,25 +47,20 @@ export class LoginComponent {
     this.http.post<any>('http://localhost:5021/Authenticate', user).subscribe(
       response => {
         if (response && response.isLogged === true) {
-          console.log('User logged in successfully');
           user.isLogged = true;
+          console.log('User logged in successfully');
           this.router.navigate(['/tasks']);
-        } else {
-          console.log('Authentication failed');
-          //get div password and show error message
-         
-          if (response.password != true) {
-           
-          }
-          if (response.HttpErrorResponse)
-          {
-            console.log("Credeciais incorretas");
-          }
+        } 
+        else {
+          console.log('User not logged in');
         }
       },
       error => {
         console.log('HTTP request error:', error);
-        // Handle HTTP request error here (e.g., show error message)
+        if (error.status === 400)
+          alert('Senha ou usuário inválidos');
+        else
+          alert('HTTP request error');
       }
     );
   }

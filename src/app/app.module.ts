@@ -16,6 +16,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
 import { LoginComponent } from './login/login.component'; 
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
+import { AuthGuard } from 'AuthGuard';
 @NgModule({
   declarations: [
     AppComponent,
@@ -38,7 +39,9 @@ import { RouterModule } from '@angular/router';
     HttpClientModule, // Importação do módulo HttpClientModule
     ReactiveFormsModule 
   ],
-  providers: [],
+  providers: [
+    AuthGuard
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
