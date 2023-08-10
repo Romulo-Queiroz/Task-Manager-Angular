@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Router } from '@angular/router';
@@ -45,12 +45,13 @@ export class LoginComponent {
         } else {
           console.log('Authentication failed');
           //get div password and show error message
-          var passwordDiv =  document.getElementById('password');
-          if (passwordDiv) {
-            passwordDiv.innerHTML = 'Invalid username or password';
+         
+          if (response.password != true) {
+           
           }
-          if (this.loginForm.value.password) {
-            this.loginForm.value.password = '';
+          if (response.HttpErrorResponse)
+          {
+            console.log("Credeciais incorretas");
           }
         }
       },
