@@ -1,11 +1,12 @@
 /* login.component.css */
-
-.container {
+.centercontents{
+    margin-top: 100px;
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
-  }
+
+}
+
   
   .login-form {
     border: 1px solid #ccc;
@@ -31,17 +32,14 @@
   }
   
   .form-group input {
-    width: 100%;
+    width: 400px;
     padding: 8px;
     font-size: 16px;
     border: 1px solid #ccc;
     border-radius: 3px;
   }
   
-  .button-group {
-    display: flex;
-    justify-content: center;
-  }
+  
   
   .btn {
     padding: 10px 20px;

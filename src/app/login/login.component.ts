@@ -1,11 +1,9 @@
 import { Component } from '@angular/core';
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { HttpClient} from '@angular/common/http';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Router } from '@angular/router';
 
-import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -66,3 +64,4 @@ export class LoginComponent {
   }
 }
 
+//bora!!!!
