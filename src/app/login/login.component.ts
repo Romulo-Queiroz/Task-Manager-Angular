@@ -27,7 +27,11 @@ export class LoginComponent {
       isLogged: ['', Validators.required]
     });
   }
-
+ngOnInit() {
+  if (this.authService.isLoggedIn()) {
+    this.router.navigate(['/']);
+  }
+}
   closeModal() {
     this.modalService.dismissAll();
   }
@@ -41,9 +45,11 @@ export class LoginComponent {
 
     this.http.post('http://localhost:5021/Authenticate', user).subscribe(
       user => {
-        console.log(user);
+       
         this.authService.setUser(user);
+        
         this.router.navigate(['/tasks']);
+        return user;
       }
     );
   }

@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from 'auth.service';
+import { LoginComponent } from './login/login.component';
 
 @Component({
   selector: 'app-root',
@@ -9,13 +10,20 @@ import { AuthService } from 'auth.service';
 })
 export class AppComponent {
   title = 'todoListFront';
-  
-  constructor(private authService: AuthService, private router: Router) {}
+  user: any;
+  constructor(private authService: AuthService, private router: Router) {
+    this.user = this.authService.getUser();
+  }
 
   ngOnInit() {
     if (this.authService.isLoggedIn()) {
       this.router.navigate(['/tasks']); 
+      this.user = this.authService.getUser();
     }
+    
   }
+ 
+ 
+  
 }
 

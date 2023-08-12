@@ -40,7 +40,8 @@ import { AuthGuard } from 'AuthGuard';
     ReactiveFormsModule 
   ],
   providers: [
-    AuthGuard
+    AuthGuard,
+    LoginComponent
   ],
   bootstrap: [AppComponent]
 })
