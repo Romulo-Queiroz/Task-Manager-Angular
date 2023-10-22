@@ -14,8 +14,8 @@ import { UpdateTodoComponent } from '../update-todo/update-todo.component';
 export class TaskListComponent implements OnInit {
   
   tarefasConcluidas: any[] = [];
-  tarefasPorPagina = 6; // Defina a quantidade de tarefas que você deseja exibir por página
-  currentPage = 1; // Define a página atual inicial (pode ser 1 ou qualquer outra página inicial)
+  tarefasPorPagina = 6; 
+  currentPage = 1; 
   totalPages = this.tarefasConcluidas.length;
   constructor(private http: HttpClient, private router: Router, private modalService: NgbModal) {}
 

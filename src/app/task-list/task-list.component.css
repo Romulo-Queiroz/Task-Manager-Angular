@@ -5,16 +5,12 @@
 h2 {
   text-align: center;
 }
-
-
-  .id {
-    margin-top: 10px;
-    color: rgb(85, 64, 64);
-    font-size: 20px;
-    font-weight: bold;
-
-
-  }
+.id {
+  margin-top: 10px;
+  color: rgb(85, 64, 64);
+  font-size: 20px;
+  font-weight: bold;
+}
 .tittle {
   text-align: center;
   background-color: #a3a3a3;
@@ -22,10 +18,7 @@ h2 {
   margin: 0;
   border-bottom: 1px solid #ccc;
   box-shadow: 0 3px 3px rgba(0, 0, 0, 0.1);
-
-
 }
-
  .myUl {
   gap: 10px;
   margin-top: 20px;
@@ -45,9 +38,6 @@ h2 {
   background: #333;
   background-image: linear-gradient(to right, #ccc, #333, #ccc);
 }
-
-
-
 .button-group {
   padding: 10px;
   display: flex;
