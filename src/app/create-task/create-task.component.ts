@@ -1,7 +1,8 @@
-import { Component, ViewChild, ElementRef } from '@angular/core';
+import { Component } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
+
+
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 @Component({
   selector: 'app-create-task',
@@ -18,15 +19,14 @@ export class CreateTaskComponent {
     });
   }
 
-  
   closeModal() {
     this.modalService.dismissAll();
   }
+
   createTask() {
     if (this.taskForm.invalid) {
       return;
     }
-
     const newTask = {
       Title: this.taskForm.value.taskTitle,
       Description: this.taskForm.value.taskDescription,

@@ -27,11 +27,13 @@ export class LoginComponent {
       isLogged: ['', Validators.required]
     });
   }
+  
 ngOnInit() {
   if (this.authService.isLoggedIn()) {
     this.router.navigate(['/']);
-  }
-}
+    }
+  } 
+  
   closeModal() {
     this.modalService.dismissAll();
   }
@@ -54,5 +56,3 @@ ngOnInit() {
     );
   }
 }
-
-//bora!!!!

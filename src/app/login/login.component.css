@@ -6,58 +6,44 @@
     align-items: center;
 
 }
-
+.login-form {
+  border: 1px solid #ccc;
+  padding: 20px;
+  width: 400px;
   
-  .login-form {
-    border: 1px solid #ccc;
-    padding: 20px;
-    width: 400px;
-    
-    background-color: #f9f9f9;
-    border-radius: 5px;
-  }
-  
-  .login-form h2 {
-    margin-bottom: 20px;
-    text-align: center;
-  }
-  
-  .form-group {
-    margin-bottom: 15px;
-  }
-  
-  .form-group label {
-    display: block;
-    margin-bottom: 5px;
-  }
-  
-  .form-group input {
-    width: 400px;
-    padding: 8px;
-    font-size: 16px;
-    border: 1px solid #ccc;
-    border-radius: 3px;
-  }
-  
-  
-  
-  .btn {
-    padding: 10px 20px;
-    font-size: 16px;
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    border-radius: 3px;
-    cursor: pointer;
-  }
-  
-  .btn-primary {
-    background-color: #007bff;
-  }
-  
-  .btn-primary:hover {
-    background-color: #0056b3;
-  }
-  
-  /* Adicione mais estilos aqui, se necessário */
-  
+  background-color: #f9f9f9;
+  border-radius: 5px;
+}
+.login-form h2 {
+  margin-bottom: 20px;
+  text-align: center;
+}
+.form-group {
+  margin-bottom: 15px;
+}
+.form-group label {
+  display: block;
+  margin-bottom: 5px;
+}
+.form-group input {
+width: 400px;
+padding: 8px;
+font-size: 16px;
+border: 1px solid #ccc;
+border-radius: 3px;
+}
+.btn {
+padding: 10px 20px;
+font-size: 16px;
+background-color: #007bff;
+color: #fff;
+border: none;
+border-radius: 3px;
+cursor: pointer;
+}
+.btn-primary {
+  background-color: #007bff;
+}
+.btn-primary:hover {
+  background-color: #0056b3;
+}
