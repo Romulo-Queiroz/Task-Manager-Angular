@@ -4,6 +4,7 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ConfirmationModalComponent } from '../confirmation-modal/confirmation-modal.component';
 import { UpdateTodoComponent } from '../update-todo/update-todo.component';
 import { CreateTaskComponent } from '../create-task/create-task.component';
+import { ListTaskDoneService } from '../Services/list-task-done.service';
 
 @Component({
   selector: 'app-task-done',
@@ -11,12 +12,11 @@ import { CreateTaskComponent } from '../create-task/create-task.component';
   styleUrls: ['./task-done.component.css']
 })
 export class TaskDoneComponent {
-  constructor(private http: HttpClient, private modalService: NgbModal,
-    ) {}
+  constructor(private http: HttpClient, private modalService: NgbModal,private listTaskDoneService: ListTaskDoneService) {}
     
     ngOnInit() {
       if (this.tarefasConcluidas.length === 0) {
-        this.http.get<any>('http://localhost:5021/home').subscribe(
+        this.listTaskDoneService.listTaskDone().subscribe(
           response => {
             this.tarefasConcluidas = response;
           },
