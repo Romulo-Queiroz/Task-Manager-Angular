@@ -3,7 +3,7 @@
     <div>
         <button class="btn btn-primary" (click)="openCreateTaskModal()">Criar Tarefa</button>
         <ul class="myUl mb-3">
-            <li *ngFor="let tarefa of tarefasConcluidas" [ngClass]="{'willDo': !tarefa.done}">
+            <li *ngFor="let tarefa of tasksToDo" [ngClass]="{'willDo': !tarefa.done}">
                 <ng-container *ngIf="tarefa.done === false">
                 <p class="id">#{{ tarefa.id }}</p>
                 <h4 class="tittle">{{ tarefa.title }}</h4>
