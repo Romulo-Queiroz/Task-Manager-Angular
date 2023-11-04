@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-
+import {UpdateCreateTasksService} from '../Services/update-create-tasks.service';
 
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 @Component({
@@ -12,7 +12,7 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 export class CreateTaskComponent {
   taskForm: FormGroup;
 
-  constructor(private http: HttpClient, private formBuilder: FormBuilder, private modalService: NgbModal) {
+  constructor(private http: HttpClient, private formBuilder: FormBuilder, private modalService: NgbModal, private updateCreateTasksService:UpdateCreateTasksService) {
     this.taskForm = this.formBuilder.group({
       taskTitle: ['', Validators.required],
       taskDescription: ['', Validators.required]
@@ -34,12 +34,12 @@ export class CreateTaskComponent {
       CreatedAt: new Date()
     };
 
-    this.http.post<any>('http://localhost:5021/inserir', newTask).subscribe(
-      response => {   
-       this.closeModal();
+    this.updateCreateTasksService.createTask(newTask).subscribe(
+      response => {
+        this.closeModal();
       },
       error => {
-        console.error('Erro ao criar a tarefa:', error);
+        console.error('Erro ao criar tarefa:', error);
       }
     );
   }
