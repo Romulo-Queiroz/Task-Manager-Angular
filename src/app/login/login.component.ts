@@ -38,20 +38,19 @@ ngOnInit() {
     this.modalService.dismissAll();
   }
 
-  onSubmit() { 
-   let user = {
+  onSubmit() {
+    let user = {
       username: this.loginForm.value.username,
       password: this.loginForm.value.password,
       isLogged: false
     };
-
-    this.http.post('http://localhost:5021/Authenticate', user).subscribe(
-      user => {
-       
-        this.authService.setUser(user);
-        
-        this.router.navigate(['/tasks']);
-        return user;
+    this.authService.authenticate(user).subscribe(
+      (response) => {
+        this.authService.setUser(response);
+        this.router.navigate(['/task-done']);
+      },
+      (error) => {
+        console.log(error);
       }
     );
   }
