@@ -6,11 +6,11 @@ import { environment } from './enviroment';
 @Injectable({
     providedIn: 'root', 
   })
-  export class ListTaskTodoService {
+export class ListTaskTodoService {
     constructor(private http: HttpClient) {}
-  
+
     listTasktodo(): Observable<any> {
         const url = `${environment.apiBaseUrl}/TasksToDo`;
-      return this.http.get<any>(url);
+        return this.http.get<any>(url);
     }
-  }
+}
