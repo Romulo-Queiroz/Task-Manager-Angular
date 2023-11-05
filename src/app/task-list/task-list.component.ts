@@ -6,6 +6,7 @@ import { CreateTaskComponent } from '../create-task/create-task.component';
 import { ConfirmationModalComponent } from '../confirmation-modal/confirmation-modal.component';
 import { UpdateTodoComponent } from '../update-todo/update-todo.component';
 import {ListTaskTodoService} from '../Services/list-task-todo.service';
+import {UpdateCreateTasksService} from '../Services/update-create-tasks.service';
 
 @Component({
   selector: 'app-task-list',
@@ -18,7 +19,10 @@ export class TaskListComponent implements OnInit {
   tarefasPorPagina = 6; 
   currentPage = 1; 
   totalPages = this.tasksToDo.length;
-  constructor(private http: HttpClient, private router: Router, private modalService: NgbModal, private listTaskTodoService:ListTaskTodoService) {}
+  constructor(private http: HttpClient, 
+    private router: Router, 
+    private modalService: NgbModal, 
+    private listTaskTodoService:ListTaskTodoService) {}
 
   ngOnInit() {
     this.listTaskTodoService.listTasktodo().subscribe(
@@ -51,25 +55,8 @@ export class TaskListComponent implements OnInit {
   }
 
   openUpdateTaskModal(taskId: number) {
-    this.http.get<any>(`http://localhost:5021/home/${taskId}`).subscribe(
-      response => {
-        const modalRef = this.modalService.open(UpdateTodoComponent);
-        modalRef.componentInstance.taskId = taskId;
-        modalRef.componentInstance.task = response;
-      
-        modalRef.result.then(
-          result => {
-            console.log('Modal fechado:', result);
-          },
-          reason => {
-            console.log('Modal fechado por motivo:', reason);
-          }
-        );
-      },
-      error => {
-        console.error('Erro ao obter os dados da tarefa:', error);
-      }
-    );
+    const modalRef = this.modalService.open(UpdateTodoComponent);
+    modalRef.componentInstance.taskId = taskId;
   }
 
   markTaskAsUndone(taskId: number) {
