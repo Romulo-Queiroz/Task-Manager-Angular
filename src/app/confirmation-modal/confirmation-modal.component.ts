@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { HttpClient } from '@angular/common/http';
-
+import { DeleteTaskService } from '../Services/delete-task.service';
 @Component({
   selector: 'app-confirmation-modal',
   templateUrl: './confirmation-modal.component.html',
@@ -10,7 +10,9 @@ import { HttpClient } from '@angular/common/http';
 export class ConfirmationModalComponent {
   taskId!: number;
 
-  constructor(private activeModal: NgbActiveModal, private http: HttpClient) {}
+  constructor(private activeModal: NgbActiveModal, 
+    private http: HttpClient,
+    private deleteTaskService:DeleteTaskService) {}
 
   closeModal() {
     this.activeModal.dismiss();
@@ -21,13 +23,12 @@ export class ConfirmationModalComponent {
   }
   
   deleteTask() {
-    this.http.delete<any>(`http://localhost:5021/deletar/${this.taskId}`).subscribe(
-      response => {
-        console.log('Tarefa excluída com sucesso:', response);
-        this.activeModal.close(this.taskId);
+    this.deleteTaskService.deleteTask(this.taskId).subscribe(
+      (response) => {
+        this.activeModal.close();
       },
-      error => {
-        console.error('Erro ao excluir a tarefa:', error);
+      (error) => {
+        console.error('Erro ao deletar a tarefa:', error);
       }
     );
   }
