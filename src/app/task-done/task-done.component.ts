@@ -4,7 +4,7 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ConfirmationModalComponent } from '../confirmation-modal/confirmation-modal.component';
 import { UpdateTodoComponent } from '../update-todo/update-todo.component';
 import { CreateTaskComponent } from '../create-task/create-task.component';
-import { ListTaskDoneService } from '../Services/list-task-done.service';
+import { ListTaskDoneService } from '../../Services/list-task-done.service';
 
 @Component({
   selector: 'app-task-done',

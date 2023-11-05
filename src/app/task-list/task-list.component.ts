@@ -5,8 +5,8 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { CreateTaskComponent } from '../create-task/create-task.component';
 import { ConfirmationModalComponent } from '../confirmation-modal/confirmation-modal.component';
 import { UpdateTodoComponent } from '../update-todo/update-todo.component';
-import { ListTaskTodoService } from '../Services/list-task-todo.service';
-import { MarkTaskAsUndoneService } from '../Services/mark-task-done.service';
+import { ListTaskTodoService } from '../../Services/list-task-todo.service';
+import { MarkTaskAsUndoneService } from '../../Services/mark-task-done.service';
 
 @Component({
   selector: 'app-task-list',

@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import {UpdateCreateTasksService} from '../Services/update-create-tasks.service';
+import {UpdateCreateTasksService} from '../../Services/update-create-tasks.service';
 
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 @Component({

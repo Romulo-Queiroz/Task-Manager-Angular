@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { UpdateCreateTasksService } from '../Services/update-create-tasks.service';
+import { UpdateCreateTasksService } from '../../Services/update-create-tasks.service';
 
 @Component({
   selector: 'app-update-todo',
