@@ -35,50 +35,6 @@ export class TaskDoneComponent {
   openConfirmationModal(taskId: number) {
     const modalRef = this.modalService.open(ConfirmationModalComponent);
     modalRef.componentInstance.taskId = taskId;
-
-    modalRef.result.then(
-      result => {
-        console.log('Modal fechado:', result);
-      },
-      reason => {
-        console.log('Modal fechado por motivo:', reason);
-      }
-    );
-  }
-
-  openUpdateTaskModal(taskId: number) {
-    this.http.get<any>(`http://localhost:5021/home/${taskId}`).subscribe(
-      response => {
-        const modalRef = this.modalService.open(UpdateTodoComponent);
-        modalRef.componentInstance.taskId = taskId;
-        modalRef.componentInstance.task = response;
-      
-        modalRef.result.then(
-          result => {
-          
-            console.log('Modal fechado:', result);
-          },
-          reason => {
-            console.log('Modal fechado por motivo:', reason);
-          }
-        );
-      },
-      error => {
-        console.error('Erro ao obter os dados da tarefa:', error);
-      }
-    );
-  }
-    
-  markTaskAsUndone(taskId: number) {
-    this.http.put<any>(`http://localhost:5021/done/${taskId}`, { Done: false }).subscribe(
-      response => {
-        console.log('Tarefa atualizada com sucesso:', response);
-        this.tarefasConcluidas = this.tarefasConcluidas.filter(tarefa => tarefa.id !== taskId);
-      },
-      error => {
-        console.error('Erro ao atualizar a tarefa:', error);
-      }
-    );
   }
  
 }

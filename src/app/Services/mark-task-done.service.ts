@@ -6,11 +6,11 @@ import { environment } from './enviroment';
 @Injectable({
   providedIn: 'root',
 })
-export class ListTaskTodoService {
+export class MarkTaskAsUndoneService {
   constructor(private http: HttpClient) {}
 
-  listTasktodo(): Observable<any> {
-    const url = `${environment.apiBaseUrl}/TasksToDo`;
-    return this.http.get<any>(url);
+  markTaskAsDone(taskId: number): Observable<any> {
+    const url = `${environment.apiBaseUrl}/done/${taskId}`;
+    return this.http.put(url, { done: true });
   }
 }
