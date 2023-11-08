@@ -17,6 +17,8 @@ import { LoginComponent } from './login/login.component';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { AuthGuard } from 'AuthGuard';
+import { JWT_OPTIONS,JwtModule } from '@auth0/angular-jwt';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -29,6 +31,14 @@ import { AuthGuard } from 'AuthGuard';
     LoginComponent,
   ],
   imports: [
+    JwtModule.forRoot({
+      config: {
+        tokenGetter: function  tokenGetter() {
+             return     localStorage.getItem('jwtToken');},
+        allowedDomains: ['localhost:4200'],
+        disallowedRoutes: ['http://localhost:4200/login/authenticate']
+      }
+    }),
     RouterModule.forRoot([]),
     RouterModule,
     FormsModule,

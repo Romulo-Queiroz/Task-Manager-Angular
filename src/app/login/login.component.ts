@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Router } from '@angular/router';
 import { AuthService }  from '../../Services/auth.service';
+import { userModel } from 'src/Models/user.model';
 
 
 @Component({
@@ -13,7 +14,8 @@ import { AuthService }  from '../../Services/auth.service';
 })
 export class LoginComponent {
   loginForm: FormGroup;
-
+  token: string | null = "null";
+  user : userModel = new userModel();
   constructor(
     private http: HttpClient,
     private formBuilder: FormBuilder,
@@ -29,10 +31,7 @@ export class LoginComponent {
   }
   
 ngOnInit() {
-  if (this.authService.isLoggedIn()) {
-    this.router.navigate(['/']);
-    }
-  } 
+}
   
   closeModal() {
     this.modalService.dismissAll();
