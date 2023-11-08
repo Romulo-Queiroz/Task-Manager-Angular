@@ -6,7 +6,7 @@ import { LoginComponent } from './login/login.component';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: ['./app.component.css'],
 })
 export class AppComponent {
   title = 'todoListFront';
@@ -17,18 +17,11 @@ export class AppComponent {
 
   ngOnInit() {
     const token = localStorage.getItem('jwtToken');
-    console.log("token: " + token)
+    console.log('token: ' + token);
     if (token && this.authService.isTokenValid(token)) {
       this.user.isLogged = true;
-      console.log("usuario esta logado token é válido")
     } else {
       this.authService.logout();
-      console.log("usuario não esta logado token é inválido")
     }
-    
   }
- 
- 
-  
 }
-
