@@ -7,3 +7,17 @@
   justify-content: center;
   width: 100%;
 }
+#navbarNav{
+  margin : 0 auto;
+  text-align: center;
+}
+
+.nav-link{
+  font-weight: bold;
+  color: #0d0d0e;
+}
+
+.nav-link:hover{
+  color: #555555;
+  transform: scale(1.1);
+}
