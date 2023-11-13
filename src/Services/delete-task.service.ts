@@ -10,7 +10,7 @@ export class DeleteTaskService {
   constructor(private http: HttpClient) {}
 
   deleteTask(taskId: number): Observable<any> {
-    const url = `${environment.apiBaseUrl}/deletar/${taskId}`;
+    const url = `${environment.apiBaseUrl}/delete/${taskId}`;
     return this.http.delete(url).pipe((response) => {
       return response;
     });

@@ -15,8 +15,14 @@ export class CreateTaskComponent {
   constructor(private http: HttpClient, private formBuilder: FormBuilder, private modalService: NgbModal, private updateCreateTasksService:UpdateCreateTasksService) {
     this.taskForm = this.formBuilder.group({
       taskTitle: ['', Validators.required],
-      taskDescription: ['', Validators.required]
+      taskDescription: ['', Validators.required],
+      taskCategory: ['', Validators.required],
     });
+    var user = localStorage.getItem('user');
+    if (user !== null) {
+      user = JSON.parse(user);
+      console.log("Em create-task.component.ts: tenho user = ", user);
+    }
   }
 
   closeModal() {
@@ -31,16 +37,14 @@ export class CreateTaskComponent {
       Title: this.taskForm.value.taskTitle,
       Description: this.taskForm.value.taskDescription,
       Done: false,
-      CreatedAt: new Date()
+      CreatedAt: new Date(),
+      CategorieTaskId: this.taskForm.value.taskCategory,
     };
 
     this.updateCreateTasksService.createTask(newTask).subscribe(
       response => {
-        this.closeModal();
+      this.closeModal();
       },
-      error => {
-        console.error('Erro ao criar tarefa:', error);
-      }
     );
   }
 

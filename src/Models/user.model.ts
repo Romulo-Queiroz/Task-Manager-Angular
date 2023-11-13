@@ -1,6 +1,6 @@
 export class userModel {
-    username: string = '';
-    password: string = '';
-    isLogged: boolean = false;
-  }
-  
+  id?: number;
+  username?: string = '';
+  password?: string = '';
+  isLogged?: boolean = false;
+}

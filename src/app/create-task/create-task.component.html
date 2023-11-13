@@ -14,6 +14,13 @@
           <label for="taskDescription" class="form-label">Descrição</label>
           <textarea class="form-control" id="taskDescription" rows="3" placeholder="Digite a descrição da tarefa" formControlName="taskDescription"></textarea>
         </div>
+        <div class="mb-3">
+          <label for="taskCategory" class="form-label">Categoria</label>
+          <select class="form-select" id="priority" formControlName="taskCategory">
+            <option value="2">Refatoração</option>
+            <option value="1">Implementação</option>
+          </select>
+        </div>
       </form>
     </div>
     <div class="modal-footer">

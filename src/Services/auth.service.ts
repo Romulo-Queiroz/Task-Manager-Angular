@@ -28,15 +28,17 @@ export class AuthService {
     const url = `${environment.apiBaseUrl}/api/login/authenticate`;
     return this.http.post(url, user).pipe(
       map((response) => {
-        this.user = response;
-        localStorage.setItem('user', JSON.stringify(this.user));
+        this.user = response; 
+        const userData = {
+          id: this.user.user.id, 
+          username: this.user.user.username,
+          isAdmin: this.user.user.isAdmin   
+        };
+     
+        localStorage.setItem('user', JSON.stringify(userData));
         localStorage.setItem('jwtToken', this.user.token);
         return this.user;
       }),
-      catchError((error) => {
-        console.log(error);
-        return throwError(error);
-      })
     );
   }
 
