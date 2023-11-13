@@ -5,6 +5,7 @@ import { catchError, map } from 'rxjs/operators';
 import { environment } from './enviroment';
 import { LoginResponse } from 'src/Interfaces/login.interface';
 import { userModel } from 'src/Models/user.model';
+import { Route, Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root',
@@ -13,7 +14,8 @@ export class AuthService {
   user: any;
   token: string | null = null;
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient,
+    private route:Router ) {}
 
   ngOnInit() {
     const token = localStorage.getItem('jwtToken');
@@ -32,7 +34,8 @@ export class AuthService {
         const userData = {
           id: this.user.user.id, 
           username: this.user.user.username,
-          isAdmin: this.user.user.isAdmin   
+          isAdmin: this.user.user.isAdmin,
+          isLogged: true  
         };
      
         localStorage.setItem('user', JSON.stringify(userData));
@@ -62,6 +65,7 @@ export class AuthService {
     this.user = null;
     localStorage.removeItem('user');
     localStorage.removeItem('jwtToken');
+    this.route.navigate(['/login']);
   }
 
   isTokenValid(token?: string): boolean {

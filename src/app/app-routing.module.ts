@@ -7,11 +7,7 @@ import { TaskDoneComponent } from './task-done/task-done.component';
 import { AuthGuard } from 'AuthGuard';
 
 const routes: Routes = [
-  {
-    path: '',
-    redirectTo: '/login',
-    pathMatch: 'full',
-  },
+
   { 
     path: 'tasks', 
     component: TaskListComponent,
