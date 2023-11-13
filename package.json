@@ -22,7 +22,7 @@
     "@ng-bootstrap/ng-bootstrap": "^14.1.1",
     "@popperjs/core": "^2.11.7",
     "angular-jwt": "^0.1.11",
-    "bootstrap": "^5.2.3",
+    "bootstrap": "^5.3.2",
     "jquery": "^3.3.1",
     "ngx-pagination": "^6.0.3",
     "popper.js": "^1.14.3",
