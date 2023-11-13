@@ -9,7 +9,7 @@ import { LoginComponent } from './login/login.component';
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent {
-  title = 'todoListFront';
+  title = 'Task Manager 1.0';
   user: any;
   constructor(private authService: AuthService, private router: Router) {
     this.user = this.authService.getUser();

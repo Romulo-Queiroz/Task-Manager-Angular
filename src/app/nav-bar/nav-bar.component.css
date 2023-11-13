@@ -14,10 +14,10 @@
 
 .nav-link{
   font-weight: bold;
-  color: #0d0d0e;
+  color: #a9a9aa;
 }
 
 .nav-link:hover{
-  color: #555555;
+  color: #f5f3f3;
   transform: scale(1.1);
 }
