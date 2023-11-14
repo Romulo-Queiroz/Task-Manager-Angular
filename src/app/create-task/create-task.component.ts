@@ -44,6 +44,7 @@ export class CreateTaskComponent {
     this.updateCreateTasksService.createTask(newTask).subscribe(
       response => {
       this.closeModal();
+      window.location.reload();
       },
     );
   }

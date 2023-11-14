@@ -34,6 +34,7 @@ updateTask() {
       response => {
         console.log('Tarefa atualizada com sucesso:', response);
         this.closeModal();
+        window.location.reload();
       },
       error => {
         console.error('Erro ao atualizar a tarefa:', error);

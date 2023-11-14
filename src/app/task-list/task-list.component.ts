@@ -56,6 +56,7 @@ export class TaskListComponent implements OnInit {
     this.markTaskAsUndoneService.markTaskAsDone(taskId).subscribe(
       (response) => {
         this.ngOnInit();
+        window.location.reload();
       },
       (error) => {
         console.error('Erro ao marcar a tarefa como concluída:', error);

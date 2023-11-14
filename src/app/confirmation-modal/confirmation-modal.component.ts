@@ -26,6 +26,7 @@ export class ConfirmationModalComponent {
     this.deleteTaskService.deleteTask(this.taskId).subscribe(
       (response) => {
         this.activeModal.close();
+        window.location.reload();
       },
       (error) => {
         console.error('Erro ao deletar a tarefa:', error);
