@@ -54,6 +54,7 @@ ngOnInit() {
         (response) => {
           this.authService.setUser(response);
           this.router.navigate(['/task-done']);
+          window.location.reload();
         },
         (error) => {
           this.showError = true;
