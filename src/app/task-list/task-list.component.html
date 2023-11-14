@@ -5,9 +5,10 @@
         <ul class="myUl mb-3">
             <li *ngFor="let tarefa of tasksToDo" [ngClass]="{'willDo': !tarefa.done}">
                 <ng-container *ngIf="tarefa.done === false">
-                <p class="id">#{{ tarefa.id }}</p>
-                <h4 class="tittle">{{ tarefa.title }}</h4>
-                <p class="description"><strong>Description:</strong> {{ tarefa.description }}</p>
+                <p class="id">#{{ tarefa.taskId }}</p>
+                <h4 class="tittle">{{ tarefa.taskTitle }}</h4>
+                <p class="description"><strong>Description:</strong> {{ tarefa.taskDescription }}</p>
+                <p class="category"><strong>Categoria:</strong> {{ tarefa.categoryName }}</p>
                 <div class="button-group">
                 <button class="btn btn-success" (click)="markTaskAsUndone(tarefa.id)">Feito</button>
                 <button class="btn btn-danger" (click)="openConfirmationModal(tarefa.id)">Deletar</button>

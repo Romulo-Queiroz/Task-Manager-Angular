@@ -26,16 +26,18 @@ export class TaskListComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.listTaskTodoService.listTasktodo().subscribe(
-      (response) => {
-        this.tasksToDo = response;
-      },
-      (error) => {
-        console.error('Erro ao obter as tarefas concluídas:', error);
-      }
-    );
+    if (this.tasksToDo.length === 0) {
+      this.listTaskTodoService.listTasktodo().subscribe(
+        (response) => {
+          this.tasksToDo = response;
+        },
+        (error) => {
+          console.error('Erro ao obter as tarefas a fazer:', error);
+        }
+      );
+    }
   }
-
+  
   openCreateTaskModal() {
     const modalRef = this.modalService.open(CreateTaskComponent);
   }

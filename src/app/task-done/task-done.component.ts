@@ -12,6 +12,8 @@ import { ListTaskDoneService } from '../../Services/list-task-done.service';
   styleUrls: ['./task-done.component.css']
 })
 export class TaskDoneComponent {
+  tarefasConcluidas: any[] = [];
+
   constructor(private http: HttpClient, private modalService: NgbModal,private listTaskDoneService: ListTaskDoneService) {}
     
     ngOnInit() {
@@ -26,8 +28,7 @@ export class TaskDoneComponent {
         );
       }
     }
-    tarefasConcluidas: any[] = [];
-
+       
     openCreateTaskModal() {
       const modalRef = this.modalService.open(CreateTaskComponent);
     }
