@@ -6,16 +6,17 @@ import { Router } from '@angular/router';
 import { AuthService }  from '../../Services/auth.service';
 import { userModel } from 'src/Models/user.model';
 
-
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent {
+
   loginForm: FormGroup;
   token: string | null = "null";
   user : userModel = new userModel();
+  showError: boolean = false;
   constructor(
     private http: HttpClient,
     private formBuilder: FormBuilder,
@@ -25,8 +26,7 @@ export class LoginComponent {
   ) {
     this.loginForm = this.formBuilder.group({
       username: ['', Validators.required],
-      password: ['', Validators.required],
-      isLogged: ['', Validators.required]
+      password: ['', Validators.required]
     });
   }
   
@@ -43,21 +43,29 @@ ngOnInit() {
   }
 
   onSubmit() {
-    let user = {
-      username: this.loginForm.value.username,
-      password: this.loginForm.value.password,
-      isLogged: false
-    };
-    this.authService.authenticate(user).subscribe(
-      (response) => {
-        this.authService.setUser(response);
-        this.router.navigate(['/task-done']);
-      },
-      (error) => {
-        console.log(error);
-      }
-    );
+    if (this.loginForm.valid) {
+      let user = {
+        username: this.loginForm.value.username,
+        password: this.loginForm.value.password,
+        isLogged: false
+      };
+  
+      this.authService.authenticate(user).subscribe(
+        (response) => {
+          this.authService.setUser(response);
+          this.router.navigate(['/task-done']);
+        },
+        (error) => {
+          this.showError = true;
+          console.log(error);
+        }
+      );
+    }
+    else {
+      this.showError = true;
+    }
   }
+  
 
   logout() {
     this.authService.logout();
