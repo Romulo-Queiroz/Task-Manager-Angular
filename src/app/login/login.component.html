@@ -18,7 +18,33 @@
   </form>
 </div>
 
-<div *ngIf="user.isLogged == true "class="centercontents">
-  <h1 class="titleInfo">Olá {{user.username}}, deseja sair?</h1>
-  <button type="button" class="btn btn-primary" (click)="logout()">Sair</button>
+
+<div *ngIf="user.isLogged == true && tarefasNaoFeitas > 0" class="container p-5">
+  <div class="row justify-content-center align-items-center">
+    <div class="col-md-6 text-center">
+      <p class="blockquote d-block">
+        Olá <strong>{{user.username}}</strong>, vimos que você possui {{tarefasNaoFeitas}} tarefas não feitas.
+      </p>
+      <p class="blockquote d-block">
+        Caso queira sair do nosso sistema e voltar para terminar suas tarefas depois, clique no botão abaixo.
+      </p>
+      <button type="button" class="btn btn-primary" (click)="logout()">Sair</button>
+    </div>
+  </div>
 </div>
+
+<div *ngIf="user.isLogged == true && tarefasNaoFeitas < 0" class="container p-5">
+  <div class="row justify-content-center align-items-center">
+    <div class="col-md-6 text-center">
+      <p class="blockquote d-block">
+        Olá <strong>{{user.username}}</strong>
+      </p>
+      <p class="blockquote d-block">
+        Caso queira sair do nosso sistema e voltar para terminar suas tarefas depois, clique no botão abaixo.
+      </p>
+      <button type="button" class="btn btn-primary" (click)="logout()">Sair</button>
+    </div>
+  </div>
+</div>
+
+

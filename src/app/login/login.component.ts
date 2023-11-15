@@ -5,6 +5,7 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Router } from '@angular/router';
 import { AuthService }  from '../../Services/auth.service';
 import { userModel } from 'src/Models/user.model';
+import { ListTaskByUserService } from 'src/Services/list-task-by-user.service';
 
 @Component({
   selector: 'app-login',
@@ -17,12 +18,15 @@ export class LoginComponent {
   token: string | null = "null";
   user : userModel = new userModel();
   showError: boolean = false;
+  tarefasNaoFeitas = 0;
+
   constructor(
     private http: HttpClient,
     private formBuilder: FormBuilder,
     private modalService: NgbModal,
     private router: Router,
-    private authService: AuthService
+    private authService: AuthService,
+    private listTaskByUser: ListTaskByUserService
   ) {
     this.loginForm = this.formBuilder.group({
       username: ['', Validators.required],
@@ -34,6 +38,7 @@ ngOnInit() {
   const user = localStorage.getItem('user');
   if (user) {
     this.user = JSON.parse(user);
+    this.ListTaskByUser();
   }
 
 }
@@ -71,5 +76,15 @@ ngOnInit() {
   logout() {
     this.authService.logout();
     window.location.reload();
+  }
+
+  ListTaskByUser(){
+    const user = localStorage.getItem('user');
+    if(user){
+      const userJson = JSON.parse(user);
+      this.listTaskByUser.listTaskByUserId(userJson.id).subscribe((response)=>{
+        this.tarefasNaoFeitas = response;
+      });
+    }
   }
 }
