@@ -78,13 +78,17 @@ ngOnInit() {
     window.location.reload();
   }
 
-  ListTaskByUser(){
+  ListTaskByUser() {
     const user = localStorage.getItem('user');
-    if(user){
+  
+    if (user) {
       const userJson = JSON.parse(user);
-      this.listTaskByUser.listTaskByUserId(userJson.id).subscribe((response)=>{
-        this.tarefasNaoFeitas = response;
+  
+      this.listTaskByUser.listTaskByUserId(userJson.id).subscribe((response: any[]) => {
+        const tarefasNaoFeitas = response.filter((task) => !task.done);
+        this.tarefasNaoFeitas = tarefasNaoFeitas.length;
       });
     }
   }
+  
 }

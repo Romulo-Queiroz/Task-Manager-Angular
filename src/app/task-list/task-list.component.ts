@@ -7,6 +7,8 @@ import { ConfirmationModalComponent } from '../confirmation-modal/confirmation-m
 import { UpdateTodoComponent } from '../update-todo/update-todo.component';
 import { ListTaskTodoService } from '../../Services/list-task-todo.service';
 import { MarkTaskAsUndoneService } from '../../Services/mark-task-done.service';
+import { ListTaskByUserService } from 'src/Services/list-task-by-user.service';
+import { userModel } from 'src/Models/user.model';
 
 @Component({
   selector: 'app-task-list',
@@ -18,21 +20,28 @@ export class TaskListComponent implements OnInit {
   tarefasPorPagina = 6;
   currentPage = 1;
   totalPages = this.tasksToDo.length;
+  user : userModel = new userModel();
+
   constructor(
     private http: HttpClient,
     private modalService: NgbModal,
     private listTaskTodoService: ListTaskTodoService,
-    private markTaskAsUndoneService: MarkTaskAsUndoneService
+    private markTaskAsUndoneService: MarkTaskAsUndoneService,
+    private listTaskByUser: ListTaskByUserService,
   ) {}
 
   ngOnInit() {
-    if (this.tasksToDo.length === 0) {
-      this.listTaskTodoService.listTasktodo().subscribe(
+    const user = localStorage.getItem('user');
+    if (user) {
+      this.user = JSON.parse(user);
+    }
+    if (this.tasksToDo.length === 0 && this.user.id) {
+     this.listTaskByUser.listTaskByUserId(this.user.id).subscribe(
         (response) => {
           this.tasksToDo = response;
         },
         (error) => {
-          console.error('Erro ao obter as tarefas a fazer:', error);
+          console.error('Erro ao listar as tarefas:', error);
         }
       );
     }

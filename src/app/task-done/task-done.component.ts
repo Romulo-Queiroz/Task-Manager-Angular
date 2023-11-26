@@ -5,6 +5,8 @@ import { ConfirmationModalComponent } from '../confirmation-modal/confirmation-m
 import { UpdateTodoComponent } from '../update-todo/update-todo.component';
 import { CreateTaskComponent } from '../create-task/create-task.component';
 import { ListTaskDoneService } from '../../Services/list-task-done.service';
+import { ListTaskByUserService } from 'src/Services/list-task-by-user.service';
+import { userModel } from 'src/Models/user.model';
 
 @Component({
   selector: 'app-task-done',
@@ -13,17 +15,25 @@ import { ListTaskDoneService } from '../../Services/list-task-done.service';
 })
 export class TaskDoneComponent {
   tarefasConcluidas: any[] = [];
+  user: userModel = new userModel();
 
-  constructor(private http: HttpClient, private modalService: NgbModal,private listTaskDoneService: ListTaskDoneService) {}
+  constructor(private http: HttpClient, 
+  private modalService: NgbModal,
+  private listTaskDoneService: ListTaskDoneService,
+  private listTaskByUser:ListTaskByUserService) {}
     
     ngOnInit() {
-      if (this.tarefasConcluidas.length === 0) {
-        this.listTaskDoneService.listTaskDone().subscribe(
-          response => {
+      const user = localStorage.getItem('user');
+      if (user) {
+        this.user = JSON.parse(user);
+      }
+      if (this.tarefasConcluidas.length === 0 && this.user.id) {
+       this.listTaskByUser.listTaskByUserId(this.user.id).subscribe(
+          (response) => {
             this.tarefasConcluidas = response;
           },
-          error => {
-            console.error('Erro ao obter as tarefas concluídas:', error);
+          (error) => {
+            console.error('Erro ao listar as tarefas:', error);
           }
         );
       }
