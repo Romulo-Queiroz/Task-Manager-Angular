@@ -17,6 +17,7 @@ import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { AuthGuard } from 'AuthGuard';
 import { JWT_OPTIONS, JwtModule } from '@auth0/angular-jwt';
+import { AdminPageComponent } from './admin-page/admin-page.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import { JWT_OPTIONS, JwtModule } from '@auth0/angular-jwt';
     UpdateTodoComponent,
     TaskDoneComponent,
     LoginComponent,
+    AdminPageComponent,
   ],
   imports: [
     JwtModule.forRoot({

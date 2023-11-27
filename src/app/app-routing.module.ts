@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-
 import { LoginComponent } from './login/login.component';
 import { TaskListComponent } from './task-list/task-list.component';
 import { TaskDoneComponent } from './task-done/task-done.component';
 import { AuthGuard } from 'AuthGuard';
+import {AdminPageComponent} from './admin-page/admin-page.component';
 
 const routes: Routes = [
 
@@ -21,6 +21,11 @@ const routes: Routes = [
   {
     path: 'login',
     component: LoginComponent
+  },
+  {
+    path:'admin',
+    component: AdminPageComponent,
+    canActivate: [AuthGuard]
   }
 ];
 @NgModule({

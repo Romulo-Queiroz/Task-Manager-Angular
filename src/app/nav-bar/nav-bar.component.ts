@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { userModel } from 'src/Models/user.model';
 import { AuthService } from 'src/Services/auth.service';
 
 
@@ -8,8 +9,10 @@ import { AuthService } from 'src/Services/auth.service';
   styleUrls: ['./nav-bar.component.css']
 })
 export class NavBarComponent {
+  
  naveName = "Login";
  tarefasNaoFeitas = 0;
+ user: userModel = new userModel();
 
   constructor() { 
   }
@@ -17,6 +20,7 @@ export class NavBarComponent {
   ngOnInit() {
    const user = localStorage.getItem('user');
    if(user){
+      this.user = JSON.parse(user);
       this.naveName = "Sair";
    }
   }
