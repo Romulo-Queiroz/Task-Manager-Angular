@@ -17,7 +17,7 @@
     "moduleResolution": "node",
     "importHelpers": true,
     "target": "ES2022",
-    "types": ["node", "@popperjs/core"],
+    "types": ["node", "@popperjs/core","chartist","es2020"],
     "module": "ES2022",
     "useDefineForClassFields": false,
     "lib": [
