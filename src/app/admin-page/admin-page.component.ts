@@ -12,12 +12,13 @@ export class AdminPageComponent {
 
    ngOnInit(): void {
     this.createChart();
+    this.createChartBar();
   }
 
   createChart() {
     const ctx = document.getElementById('myChart') as HTMLCanvasElement;
     const myChart = new Chart(ctx, {
-      type: 'bar',
+      type: 'pie',
       data: {
         labels: ['Categoria 1', 'Categoria 2', 'Categoria 3'],
         datasets: [{
@@ -28,4 +29,19 @@ export class AdminPageComponent {
     });
   }
 
+  createChartBar() {
+    const ctx = document.getElementById('myChartBar') as HTMLCanvasElement;
+    const myChartBar = new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: ['Categoria 1', 'Categoria 2', 'Categoria 3'],
+        datasets: [{
+          label: 'Dados',
+          data: [30, 50, 20],
+          backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56']
+        }]
+      }
+    });
+  }
+  
 }
