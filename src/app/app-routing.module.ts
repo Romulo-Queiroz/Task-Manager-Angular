@@ -4,7 +4,7 @@ import { LoginComponent } from './login/login.component';
 import { TaskListComponent } from './task-list/task-list.component';
 import { TaskDoneComponent } from './task-done/task-done.component';
 import { AuthGuard } from 'AuthGuard';
-import {AdminPageComponent} from './admin-page/admin-page.component';
+import { DashboardPageComponent } from './dashbard/dashboard-page.component';
 
 const routes: Routes = [
 
@@ -23,8 +23,8 @@ const routes: Routes = [
     component: LoginComponent
   },
   {
-    path:'admin',
-    component: AdminPageComponent,
+    path:'dashboard',
+    component: DashboardPageComponent,
     canActivate: [AuthGuard]
   }
 ];

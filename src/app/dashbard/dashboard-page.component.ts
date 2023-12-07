@@ -8,11 +8,11 @@ import { ListTaskTodoService } from 'src/Services/list-task-todo.service';
 import { forkJoin } from 'rxjs';
 
 @Component({
-  selector: 'app-admin-page',
-  templateUrl: './admin-page.component.html',
-  styleUrls: ['./admin-page.component.css']
+  selector: 'app-dashboard-page',
+  templateUrl: './dashboard-page.component.html',
+  styleUrls: ['./dashboard-page.component.css']
 })
-export class AdminPageComponent {
+export class DashboardPageComponent {
 
   constructor(
     private listAllTasksService: ListAllTasksService,

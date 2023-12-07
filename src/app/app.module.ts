@@ -17,7 +17,7 @@ import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { AuthGuard } from 'AuthGuard';
 import { JWT_OPTIONS, JwtModule } from '@auth0/angular-jwt';
-import { AdminPageComponent } from './admin-page/admin-page.component';
+import { DashboardPageComponent } from './dashbard/dashboard-page.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +29,7 @@ import { AdminPageComponent } from './admin-page/admin-page.component';
     UpdateTodoComponent,
     TaskDoneComponent,
     LoginComponent,
-    AdminPageComponent,
+    DashboardPageComponent,
   ],
   imports: [
     JwtModule.forRoot({
@@ -49,7 +49,7 @@ import { AdminPageComponent } from './admin-page/admin-page.component';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    ReactiveFormsModule,
+    ReactiveFormsModule
   ],
   providers: [AuthGuard, LoginComponent],
   bootstrap: [AppComponent],
