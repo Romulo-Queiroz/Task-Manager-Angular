@@ -6,11 +6,10 @@
 Para rodar o projeto você precisa antes de algumas ferramentas instaladas:
 * Visual Studio (Preferência)
 * ter o  <a href="https://github.com/Romulo-Queiroz/Todo" target="blank">Backend</a> em sua máquina
-#### Alguns pacotes do NuGet como:
-* Microsoft.EntityFrameworkCore
-* Microsoft.EntityFrameworkCore.Design
-* Microsoft.EntityFrameworkCore.SqlLight
-* Microsoft.EntityFrameworkCore.Tools
+#### Instruções:
+* Inicie o projeto instalando as dependências ``` npm install```
+* O projeto pode ser executado com ``` ng serve ``` e estará disponível em ``` http://localhost:4200/```
+
 
 ## Clonando o beckend
 ```bash
@@ -27,6 +26,7 @@ Você precisa verificar se possui a ultima versão do angular instalado
 ```bash
 npm i @angular/cli
 ```
+* Você poderá encontrar pequenos conflitos então use o ```--froce``` (estamos resolvendo aos poucos os conflitos 10/12/23)
 # Autor
 <div align="center">
 
