@@ -18,6 +18,7 @@ import { RouterModule } from '@angular/router';
 import { AuthGuard } from 'AuthGuard';
 import { JWT_OPTIONS, JwtModule } from '@auth0/angular-jwt';
 import { DashboardPageComponent } from './dashbard/dashboard-page.component';
+import { AdministracaoComponent } from './administracao/administracao.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import { DashboardPageComponent } from './dashbard/dashboard-page.component';
     TaskDoneComponent,
     LoginComponent,
     DashboardPageComponent,
+    AdministracaoComponent,
   ],
   imports: [
     JwtModule.forRoot({
