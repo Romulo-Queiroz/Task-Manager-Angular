@@ -1,5 +1,5 @@
 <div *ngIf="user.isLogged == false"class="centercontents">
-  <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+  <form [formGroup]="loginForm" (ngSubmit)="onSubmit()"a  class="form-login">
     <div class="form-group">
       <label for="username">Usuário</label>
       <input type="text" formControlName="username" required ="form-control">

@@ -55,3 +55,14 @@ padding: 15px;
   padding: 5px;
   height: 42px;
 }
+.form-login{
+  border: 1px solid #ccc;
+  padding: 20px;
+ 
+  background-color: #d8ecfa;
+  border-radius: 5px;
+
+}
+label{
+  font-weight: 500;
+}
