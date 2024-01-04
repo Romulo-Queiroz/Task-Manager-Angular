@@ -28,22 +28,27 @@ export class AuthService {
 
   authenticate(user: userModel): Observable<LoginResponse> {
     const url = `${environment.apiBaseUrl}/api/login/authenticate`;
-    return this.http.post(url, user).pipe(
+    return this.http.post<any>(url, user).pipe(
       map((response) => {
-        this.user = response; 
-        const userData = {
-          id: this.user.user.id, 
-          username: this.user.user.username,
-          isAdmin: this.user.user.isAdmin,
-          isLogged: true  
-        };
-     
-        localStorage.setItem('user', JSON.stringify(userData));
-        localStorage.setItem('jwtToken', this.user.token);
-        return this.user;
+        if (response && response.value && response.value.user) {
+          this.user = response.value;
+          const userData = {
+            id: this.user.user.id,
+            username: this.user.user.username,
+            isAdmin: this.user.user.isAdmin,
+            isLogged: true
+          };
+         
+          localStorage.setItem('user', JSON.stringify(userData));
+          localStorage.setItem('jwtToken', this.user.token);
+          return this.user;
+        } else {
+          console.error('Resposta do servidor é inválida:', response);
+        }
       }),
     );
   }
+  
 
   setUser(user: LoginResponse) {
     user.isLogged = true;
