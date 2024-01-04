@@ -30,7 +30,11 @@ export class TaskDoneComponent {
       if (this.tarefasConcluidas.length === 0 && this.user.id) {
        this.listTaskByUser.listTaskByUserId(this.user.id).subscribe(
           (response) => {
-            this.tarefasConcluidas = response;
+            if (response && response.value && Array.isArray(response.value)) {
+              this.tarefasConcluidas = response.value;
+            } else {
+              console.error('Resposta do servidor inválida:', response);
+            }
           },
           (error) => {
             console.error('Erro ao listar as tarefas:', error);
