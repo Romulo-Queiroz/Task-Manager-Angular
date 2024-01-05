@@ -6,6 +6,7 @@ import { TodoModel } from 'src/Models/Todo.model';
 import { ListTaskDoneService } from 'src/Services/list-task-done.service';
 import { ListTaskTodoService } from 'src/Services/list-task-todo.service';
 import { forkJoin } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-dashboard-page',
@@ -25,47 +26,92 @@ export class DashboardPageComponent {
   public tasksTodo:TodoModel[] = [];
 
   ngOnInit(): void {
-    forkJoin([
-      this.listAllTasksService.listAllTasks(),
-      this.listTaskDoneService.listTaskDone(),
-      this.listTaskTodoService.listTasktodo()
-    ]).subscribe(([allTasksData, tasksDoneData, tasksTodoData]) => {
-      this.allTasks = allTasksData.length;
-      this.tasksDone = tasksDoneData.length;
-      this.tasksTodo = tasksTodoData.length;
+    this.listAllTasksService.listAllTasks().subscribe(
+      (response) => {
+        if (response && response.value && Array.isArray(response.value)) {
+          this.allTasks = response.value.length;
+          this.updateChart();
+        } else {
+          console.error('Resposta do servidor inválida:', response);
+        }
+      },
+      (error) => {
+        console.error('Erro ao listar as tarefas:', error);
+      }
+    );
   
-      this.createChart();
-      this.createChartBar();
-    });
+    this.listTaskDoneService.listTaskDone().subscribe(
+      (response) => {
+        if (response && response.value && Array.isArray(response.value)) {
+          this.tasksDone = response.value.length;
+          this.updateChart();
+        } else {
+          console.error('Resposta do servidor inválida:', response);
+        }
+      },
+      (error) => {
+        console.error('Erro ao listar as tarefas:', error);
+      }
+    );
+  
+    this.listTaskTodoService.listTasktodo().subscribe(
+      (response) => {
+        if (response && response.value && Array.isArray(response.value)) {
+          this.tasksTodo = response.value.length;
+          this.updateChart();
+        } else {
+          console.error('Resposta do servidor inválida:', response);
+        }
+      },
+      (error) => {
+        console.error('Erro ao listar as tarefas:', error);
+      }
+    );
   }
-
-  createChart() {
-  const ctx = document.getElementById('myChart') as HTMLCanvasElement;
-  const myChart = new Chart(ctx, {
-    type: 'pie',
-    data: {
-      labels: ['Tarefas não concluídas', 'Tarefas concluídas', 'Total tarefas'],
-      datasets: [{
-        data: [this.tasksTodo, this.tasksDone,this.allTasks],
-        backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56']
-      }]
+  
+  updateChart() {
+    // Chame a função createChart() somente se todas as variáveis estiverem preenchidas
+    if (this.allTasks !== undefined && this.tasksDone !== undefined && this.tasksTodo !== undefined) {
+      this.destroyChart('myChart');
+      this.createChart('myChart');
+      this.destroyChart('myChartBar');
+      this.createChartBar('myChartBar');
     }
-  });
-}
-
-  createChartBar() {
-    const ctx = document.getElementById('myChartBar') as HTMLCanvasElement;
-    const myChartBar = new Chart(ctx, {
-      type: 'bar',
+  }
+  
+  destroyChart(chartId: string) {
+    const existingChart = Chart.getChart(chartId);
+    if (existingChart) {
+      existingChart.destroy();
+    }
+  }
+  
+  createChart(canvasId: string) {
+    const ctx = document.getElementById(canvasId) as HTMLCanvasElement;
+    const myChart = new Chart(ctx, {
+      type: 'pie',
       data: {
         labels: ['Tarefas não concluídas', 'Tarefas concluídas', 'Total tarefas'],
         datasets: [{
-          label: 'Dados',
-          data: [this.tasksTodo, this.tasksDone,this.allTasks],
+          data: [this.tasksTodo, this.tasksDone, this.allTasks],
           backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56']
         }]
       }
     });
   }
   
-}
+  createChartBar(canvasId: string) {
+    const ctx = document.getElementById(canvasId) as HTMLCanvasElement;
+    const myChartBar = new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: ['Tarefas não concluídas', 'Tarefas concluídas', 'Total tarefas'],
+        datasets: [{
+          label: 'Dados',
+          data: [this.tasksTodo, this.tasksDone, this.allTasks],
+          backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56']
+        }]
+      }
+    });
+  }
+}  
