@@ -1,5 +1,9 @@
-<h1 align="center">Todo List</h1>
-
+<h1 align="center">Todo List Angular/ TypeScript</h1>
+<div align="center">
+  <h3>Acompanhe a Produtividade do Projeto</h2>
+  <a href="https://wakatime.com/badge/github/Romulo-Queiroz/Task-Manager-Frontend"><img align="center" src="https://wakatime.com/badge/github/Romulo-Queiroz/Task-Manager-Frontend.svg" alt="wakatime"></a>
+  <p>Visão Geral do Tempo Investido</p>
+</div>
 <br />
 
 # Iniciando o projeto
