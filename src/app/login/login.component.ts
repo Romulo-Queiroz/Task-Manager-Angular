@@ -87,7 +87,8 @@ ngOnInit() {
       this.listTaskByUser.listTaskByUserId(userJson.id).subscribe(
         (response) => {
           if (response && response.value && Array.isArray(response.value)) {
-            this.tarefasNaoFeitas = response.value.length;
+            const tarefasNaoFeitas = response.value.filter(task => !task.done);
+            this.tarefasNaoFeitas = tarefasNaoFeitas.length;
           } else {
             console.error('Resposta do servidor inválida:', response);
           }
@@ -98,4 +99,5 @@ ngOnInit() {
       );
     }
   }
+  
 }

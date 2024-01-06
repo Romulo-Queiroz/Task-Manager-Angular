@@ -23,23 +23,26 @@ export class UpdateCreateTasksService {
 createTask(newTask: any): Observable<any> {
   const user = JSON.parse(localStorage.getItem('user') || '{}');
 
-  if (user && user.id) {
-    const url = `${environment.apiBaseUrl}/insertTask/${user.id}`;
-    return this.http.post(url, newTask).pipe(
-      map((response) => {
-        this.closeModal();
-        console.log("Tarefa criada com sucesso!");
-        return response;
-      }),
-      catchError((error) => {
-        return throwError(error);
-      })
-    );
-  } else {
-    console.error('ID do usuário não encontrado no Local Storage ou valor inválido.');
-    return throwError('Erro ao obter ID do usuário');
+  if (!user || !user.id) {
+    return throwError('ID do usuário inválido.');
   }
+
+  const url = `${environment.apiBaseUrl}/insertTask/${user.id}`;
+
+  const taskModel: TodoModel = {
+    title: newTask.Title,
+    description: newTask.Description,
+    done: newTask.Done,
+  };
+
+  return this.http.post(url, taskModel).pipe(
+    map((response) => response),
+    catchError((error) => {
+      return throwError(error);
+    })
+  );
 }
+
 
   updateTask(taskId: number, updatedTaskData: any): Observable<any> {
     const url = `${environment.apiBaseUrl}/Edit/${taskId}`;
