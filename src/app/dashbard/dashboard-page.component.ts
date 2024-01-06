@@ -70,7 +70,6 @@ export class DashboardPageComponent {
   }
   
   updateChart() {
-    // Chame a função createChart() somente se todas as variáveis estiverem preenchidas
     if (this.allTasks !== undefined && this.tasksDone !== undefined && this.tasksTodo !== undefined) {
       this.destroyChart('myChart');
       this.createChart('myChart');
@@ -107,7 +106,7 @@ export class DashboardPageComponent {
       data: {
         labels: ['Tarefas não concluídas', 'Tarefas concluídas', 'Total tarefas'],
         datasets: [{
-          label: 'Dados',
+          label: 'Tarefas não concluídas',
           data: [this.tasksTodo, this.tasksDone, this.allTasks],
           backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56']
         }]
