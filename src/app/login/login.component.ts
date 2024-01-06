@@ -38,7 +38,7 @@ ngOnInit() {
   const user = localStorage.getItem('user');
   if (user) {
     this.user = JSON.parse(user);
-    // this.ListTaskByUser();
+    this.ListTaskByUser();
   }
 
 }
@@ -78,17 +78,24 @@ ngOnInit() {
     window.location.reload();
   }
 
-  // ListTaskByUser() {
-  //   const user = localStorage.getItem('user');
+  ListTaskByUser() {
+    const user = localStorage.getItem('user');
   
-  //   if (user) {
-  //     const userJson = JSON.parse(user);
+    if (user) {
+      const userJson = JSON.parse(user);
   
-  //     this.listTaskByUser.listTaskByUserId(userJson.id).subscribe((response: any[]) => {
-  //       const tarefasNaoFeitas = response.filter((task) => !task.done);
-  //       this.tarefasNaoFeitas = tarefasNaoFeitas.length;
-  //     });
-  //   }
-  // }
-  
- }
+      this.listTaskByUser.listTaskByUserId(userJson.id).subscribe(
+        (response) => {
+          if (response && response.value && Array.isArray(response.value)) {
+            this.tarefasNaoFeitas = response.value.length;
+          } else {
+            console.error('Resposta do servidor inválida:', response);
+          }
+        },
+        (error) => {
+          console.error('Erro ao listar as tarefas:', error);
+        }
+      );
+    }
+  }
+}
