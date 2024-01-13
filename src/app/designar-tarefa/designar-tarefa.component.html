@@ -1,2 +1,39 @@
-modal alocar tarefa 
-
+<div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Designar Tarefa</h5>
+        <button type="button" class="btn-close" (click)="closeModal()"></button>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="taskForm">
+          <div class="mb-3">
+            <label for="taskTitle" class="form-label">Título</label>
+            <input type="text" class="form-control" id="taskTitle" placeholder="Digite o título da tarefa" formControlName="taskTitle">
+          </div>
+          <div class="mb-3">
+            <label for="taskDescription" class="form-label">Descrição</label>
+            <textarea class="form-control" id="taskDescription" rows="3" placeholder="Digite a descrição da tarefa" formControlName="taskDescription"></textarea>
+          </div>
+          <div class="mb-3">
+            <label for="taskCategory" class="form-label">Categoria</label>
+            <select class="form-select" id="priority" formControlName="taskCategory">
+              <option value="2">Refatoração</option>
+              <option value="1">Implementação</option>
+            </select>
+          </div>
+            <div class="mb-3">
+                <label for="taskUser" class="form-label">Usuário</label>
+                <select class="form-select" id="priority" formControlName="taskUser">
+                    <option *ngFor="let user of users" [value]="user.id">{{user.name}}</option>
+                </select>
+            </div>
+        </form>
+              
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" (click)="closeModal()">Cancelar</button>
+        <button type="submit" class="btn btn-primary">Criar Tarefa</button>
+      </div>
+    </div>
+  </div>
+  
