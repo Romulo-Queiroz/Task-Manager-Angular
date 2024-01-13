@@ -28,7 +28,7 @@ export class DesignarTarefaComponent {
   }
 
    ngOnInit() {
-    this.listarUsuarios.listUsers().subscribe((data) => {
+    this.listarUsuarios.listUsers().subscribe((data:any) => {
       this.users = JSON.parse(JSON.stringify(data.value));
       console.log("usuarios listados", data.value);
       console.log("usuarios listados (formato JSON)", JSON.stringify(data.value));
