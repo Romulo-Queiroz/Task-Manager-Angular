@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { userModel } from 'src/Models/user.model';
+import { ListUsersService } from 'src/Services/list-users.service';
 
 @Component({
   selector: 'app-designar-tarefa',
@@ -10,10 +12,12 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 export class DesignarTarefaComponent {
 
   taskForm: FormGroup;
-  users: any[] = [];
+  users: userModel[] = [];
+
   constructor(
     private formBuilder: FormBuilder,
-    private modalService: NgbModal
+    private modalService: NgbModal,
+    private listarUsuarios: ListUsersService
   ) { 
     this.taskForm = this.formBuilder.group({
       taskTitle: [''],
@@ -23,9 +27,13 @@ export class DesignarTarefaComponent {
     });
   }
 
-  ngOnInit(): void {
+   ngOnInit() {
+    this.listarUsuarios.listUsers().subscribe((data) => {
+      this.users = JSON.parse(JSON.stringify(data.value));
+      console.log("usuarios listados", data.value);
+      console.log("usuarios listados (formato JSON)", JSON.stringify(data.value));
+    });
   }
-
   closeModal() {
     this.modalService.dismissAll();
   }
