@@ -19,6 +19,7 @@ import { AuthGuard } from 'AuthGuard';
 import { JWT_OPTIONS, JwtModule } from '@auth0/angular-jwt';
 import { DashboardPageComponent } from './dashbard/dashboard-page.component';
 import { AdministracaoComponent } from './administracao/administracao.component';
+import { DesignarTarefaComponent } from './designar-tarefa/designar-tarefa.component';
 
 @NgModule({
   declarations: [
@@ -32,6 +33,7 @@ import { AdministracaoComponent } from './administracao/administracao.component'
     LoginComponent,
     DashboardPageComponent,
     AdministracaoComponent,
+    DesignarTarefaComponent,
   ],
   imports: [
     JwtModule.forRoot({
