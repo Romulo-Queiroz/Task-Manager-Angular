@@ -14,8 +14,7 @@ export class AdministracaoComponent {
   users: userModel[] = [];
 
   constructor(
-    private modalService: NgbModal,
-    private listarUsuarios: ListUsersService
+    private modalService: NgbModal
   ) { }
 
   ngOnInit() {
