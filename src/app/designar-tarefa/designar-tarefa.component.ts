@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { userModel } from 'src/Models/user.model';
+import { AsignTaskService } from 'src/Services/asign-task.service';
 import { ListUsersService } from 'src/Services/list-users.service';
 
 @Component({
@@ -17,7 +18,8 @@ export class DesignarTarefaComponent {
   constructor(
     private formBuilder: FormBuilder,
     private modalService: NgbModal,
-    private listarUsuarios: ListUsersService
+    private listarUsuarios: ListUsersService,
+    private asignTaskService: AsignTaskService
   ) { 
     this.taskForm = this.formBuilder.group({
       taskTitle: [''],
@@ -32,6 +34,29 @@ export class DesignarTarefaComponent {
       this.users = JSON.parse(JSON.stringify(data.value));
     });
   }
+
+  onSubmit() {
+    const newTask = {
+      Title: this.taskForm.value.taskTitle,
+      Description: this.taskForm.value.taskDescription,
+      CategorieTaskId: this.taskForm.value.taskCategory,
+      UserId: this.taskForm.value.taskUser,
+    };
+
+    this.asignTaskService.createTask(newTask).subscribe(
+      (response) => {
+        console.log(response);
+        this.modalService.dismissAll();
+        this.closeModal();
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
+    this.modalService.dismissAll();
+    this.closeModal();
+  }
+
   closeModal() {
     this.modalService.dismissAll();
   }
