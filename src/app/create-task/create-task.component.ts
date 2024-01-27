@@ -43,7 +43,6 @@ export class CreateTaskComponent {
 
     this.updateCreateTasksService.createTask(newTask).subscribe(
       (response) => {
-        console.log(response);
         this.modalService.dismissAll();
         this.closeModal();
       },

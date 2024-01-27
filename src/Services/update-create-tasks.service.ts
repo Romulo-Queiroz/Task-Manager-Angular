@@ -33,6 +33,8 @@ createTask(newTask: any): Observable<any> {
     title: newTask.Title,
     description: newTask.Description,
     done: newTask.Done,
+    CategorieTaskId: newTask.CategorieTaskId,
+    userId: user.id
   };
 
   return this.http.post(url, taskModel).pipe(
@@ -51,6 +53,8 @@ createTask(newTask: any): Observable<any> {
       title: updatedTaskData.title,
       description: updatedTaskData.description,
       done: updatedTaskData.done,
+      CategorieTaskId: updatedTaskData.CategorieTaskId,
+      userId: updatedTaskData.userId,
     };
 
     return this.http.put(url, taskModel).pipe(
