@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { userModel } from 'src/Models/user.model';
 import { AsignTaskService } from 'src/Services/asign-task.service';
 import { ListUsersService } from 'src/Services/list-users.service';
@@ -19,7 +19,12 @@ export class DesignarTarefaComponent {
     private formBuilder: FormBuilder,
     private modalService: NgbModal,
     private listarUsuarios: ListUsersService,
+<<<<<<< HEAD
     private asignTaskService: AsignTaskService
+=======
+    private  asignTaskByUserService: AsignTaskByUserService,
+    private activeModal: NgbActiveModal
+>>>>>>> ff0cb52 (Fix: modal fecha após designar tarefa)
   ) { 
     this.taskForm = this.formBuilder.group({
       taskTitle: ['', Validators.required],
@@ -58,7 +63,7 @@ export class DesignarTarefaComponent {
   }
 
   closeModal() {
-    this.modalService.dismissAll();
+    this.activeModal.dismiss();
   }
 
   asignTAsk() {
@@ -74,12 +79,13 @@ export class DesignarTarefaComponent {
 
     this.asignTaskByUserService.asignTaskToUser(newTask).subscribe(
       (response) => {
-        this.modalService.dismissAll();
-        this.closeModal();
+        this.activeModal.close();
         window.location.reload();
+        console.log("Tarefa designada com sucesso");
       },
       (error) => {
-        console.log(error);
+        this.activeModal.close();
+        window.location.reload();
       }
     )
     
