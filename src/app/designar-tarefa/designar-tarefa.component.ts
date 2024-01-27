@@ -2,11 +2,7 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { userModel } from 'src/Models/user.model';
-<<<<<<< HEAD
-import { AsignTaskService } from 'src/Services/asign-task.service';
-=======
 import { AsignTaskByUserService } from 'src/Services/asign-task-by-user.service';
->>>>>>> refactor
 import { ListUsersService } from 'src/Services/list-users.service';
 
 @Component({
@@ -23,16 +19,8 @@ export class DesignarTarefaComponent {
     private formBuilder: FormBuilder,
     private modalService: NgbModal,
     private listarUsuarios: ListUsersService,
-<<<<<<< HEAD
-<<<<<<< HEAD
-    private asignTaskService: AsignTaskService
-=======
-    private  asignTaskByUserService: AsignTaskByUserService
->>>>>>> refactor
-=======
     private  asignTaskByUserService: AsignTaskByUserService,
     private activeModal: NgbActiveModal
->>>>>>> refactor
   ) { 
     this.taskForm = this.formBuilder.group({
       taskTitle: ['', Validators.required],
@@ -56,7 +44,7 @@ export class DesignarTarefaComponent {
       UserId: this.taskForm.value.taskUser,
     };
 
-    this.asignTaskService.createTask(newTask).subscribe(
+    this.asignTaskByUserService.asignTaskToUser(newTask).subscribe(
       (response) => {
         console.log(response);
         this.modalService.dismissAll();
