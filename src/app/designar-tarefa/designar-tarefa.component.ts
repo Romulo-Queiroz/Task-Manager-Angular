@@ -2,7 +2,11 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { userModel } from 'src/Models/user.model';
+<<<<<<< HEAD
 import { AsignTaskService } from 'src/Services/asign-task.service';
+=======
+import { AsignTaskByUserService } from 'src/Services/asign-task-by-user.service';
+>>>>>>> 473098a (Fix: resolvendo conflitos)
 import { ListUsersService } from 'src/Services/list-users.service';
 
 @Component({
@@ -20,11 +24,16 @@ export class DesignarTarefaComponent {
     private modalService: NgbModal,
     private listarUsuarios: ListUsersService,
 <<<<<<< HEAD
+<<<<<<< HEAD
     private asignTaskService: AsignTaskService
 =======
     private  asignTaskByUserService: AsignTaskByUserService,
     private activeModal: NgbActiveModal
 >>>>>>> ff0cb52 (Fix: modal fecha após designar tarefa)
+=======
+    private  asignTaskByUserService: AsignTaskByUserService,
+    private activeModal: NgbActiveModal
+>>>>>>> 473098a (Fix: resolvendo conflitos)
   ) { 
     this.taskForm = this.formBuilder.group({
       taskTitle: ['', Validators.required],
@@ -48,7 +57,7 @@ export class DesignarTarefaComponent {
       UserId: this.taskForm.value.taskUser,
     };
 
-    this.asignTaskService.createTask(newTask).subscribe(
+    this.asignTaskByUserService.asignTaskToUser(newTask).subscribe(
       (response) => {
         console.log(response);
         this.modalService.dismissAll();
