@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { userModel } from 'src/Models/user.model';
+import { AsignTaskByUserService } from 'src/Services/asign-task-by-user.service';
 import { ListUsersService } from 'src/Services/list-users.service';
 
 @Component({
@@ -17,13 +18,14 @@ export class DesignarTarefaComponent {
   constructor(
     private formBuilder: FormBuilder,
     private modalService: NgbModal,
-    private listarUsuarios: ListUsersService
+    private listarUsuarios: ListUsersService,
+    private  asignTaskByUserService: AsignTaskByUserService
   ) { 
     this.taskForm = this.formBuilder.group({
-      taskTitle: [''],
-      taskDescription: [''],
-      taskCategory: [''],
-      taskUser: [''],
+      taskTitle: ['', Validators.required],
+      taskDescription: ['', Validators.required],
+      taskCategory: ['', Validators.required],
+      taskUser: ['', Validators.required],
     });
   }
 
@@ -36,4 +38,27 @@ export class DesignarTarefaComponent {
     this.modalService.dismissAll();
   }
 
+  asignTAsk() {
+
+    const newTask = {
+      Title: this.taskForm.value.taskTitle,
+      Description: this.taskForm.value.taskDescription,
+      Done: false,
+      CreatedAt: new Date(),
+      CategorieTaskId: this.taskForm.value.taskCategory,
+      UserId: this.taskForm.value.taskUser
+    };
+
+    this.asignTaskByUserService.asignTaskToUser(newTask).subscribe(
+      (response) => {
+        this.modalService.dismissAll();
+        this.closeModal();
+        window.location.reload();
+      },
+      (error) => {
+        console.log(error);
+      }
+    )
+    
+  }
 }

@@ -33,7 +33,7 @@ import { DesignarTarefaComponent } from './designar-tarefa/designar-tarefa.compo
     LoginComponent,
     DashboardPageComponent,
     AdministracaoComponent,
-    DesignarTarefaComponent,
+    DesignarTarefaComponent
   ],
   imports: [
     JwtModule.forRoot({
