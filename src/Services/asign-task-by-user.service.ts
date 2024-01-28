@@ -12,12 +12,6 @@ export class AsignTaskByUserService {
   constructor(private http: HttpClient) {}
 
   asignTaskToUser(newTask: any): Observable<any> {
-    const user = JSON.parse(localStorage.getItem('user') || '{}');
-  
-    if (!user || !user.id) {
-      return throwError('ID do usuário inválido.');
-    }
-  
     const url = `${environment.apiBaseUrl}/asignTask`;
   
     const taskModel: TodoModel = {
@@ -25,7 +19,7 @@ export class AsignTaskByUserService {
       description: newTask.Description,
       done: newTask.Done,
       CategorieTaskId: newTask.CategorieTaskId,
-      userId: user.id
+      userId: newTask.UserId
     };
   
     return this.http.post(url, taskModel).pipe(
