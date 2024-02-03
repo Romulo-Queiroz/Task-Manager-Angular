@@ -20,9 +20,8 @@ export class DesignarTarefaComponent {
     private modalService: NgbModal,
     private listarUsuarios: ListUsersService,
 
-
     private  asignTaskByUserService: AsignTaskByUserService,
-    private activeModal: NgbActiveModal,
+    private activeModal: NgbActiveModal
   ) { 
     this.taskForm = this.formBuilder.group({
       taskTitle: ['', Validators.required],
