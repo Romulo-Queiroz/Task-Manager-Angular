@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { DesignarTarefaComponent } from '../designar-tarefa/designar-tarefa.component';
-import { ListUsersService } from 'src/Services/list-users.service';
 import { userModel } from 'src/Models/user.model';
+import { CreateUserComponent } from '../create-user/create-user.component';
 
 @Component({
   selector: 'app-administracao',
@@ -24,5 +24,7 @@ export class AdministracaoComponent {
   openDesignarTarefaModal() {
     const modalRef = this.modalService.open(DesignarTarefaComponent);
   }
-
+  openCreateUsuarioModal() {
+    const modalRef = this.modalService.open(CreateUserComponent);
+  }
 }
