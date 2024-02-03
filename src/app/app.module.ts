@@ -5,7 +5,7 @@ import { AppComponent } from './app.component';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { TaskListComponent } from './task-list/task-list.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { CreateTaskComponent } from './create-task/create-task.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ConfirmationModalComponent } from './confirmation-modal/confirmation-modal.component';
@@ -20,6 +20,7 @@ import { JWT_OPTIONS, JwtModule } from '@auth0/angular-jwt';
 import { DashboardPageComponent } from './dashbard/dashboard-page.component';
 import { AdministracaoComponent } from './administracao/administracao.component';
 import { DesignarTarefaComponent } from './designar-tarefa/designar-tarefa.component';
+import { JwtInterceptor } from '../Services/jwtInterceptor.service';
 
 @NgModule({
   declarations: [
@@ -55,7 +56,8 @@ import { DesignarTarefaComponent } from './designar-tarefa/designar-tarefa.compo
     HttpClientModule,
     ReactiveFormsModule
   ],
-  providers: [AuthGuard, LoginComponent],
+  providers: [AuthGuard, LoginComponent, 
+    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
