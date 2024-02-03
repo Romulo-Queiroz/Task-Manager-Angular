@@ -2,15 +2,7 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { userModel } from 'src/Models/user.model';
-<<<<<<< HEAD
-<<<<<<< HEAD
-import { AsignTaskService } from 'src/Services/asign-task.service';
-=======
 import { AsignTaskByUserService } from 'src/Services/asign-task-by-user.service';
->>>>>>> 473098a (Fix: resolvendo conflitos)
-=======
-import { AsignTaskByUserService } from 'src/Services/asign-task-by-user.service';
->>>>>>> 473098a36bf05a40a9a1e985c7f223012df7436a
 import { ListUsersService } from 'src/Services/list-users.service';
 
 @Component({
@@ -27,22 +19,10 @@ export class DesignarTarefaComponent {
     private formBuilder: FormBuilder,
     private modalService: NgbModal,
     private listarUsuarios: ListUsersService,
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-    private asignTaskService: AsignTaskService
-=======
+
+
     private  asignTaskByUserService: AsignTaskByUserService,
-    private activeModal: NgbActiveModal
->>>>>>> ff0cb52 (Fix: modal fecha após designar tarefa)
-=======
-    private  asignTaskByUserService: AsignTaskByUserService,
-    private activeModal: NgbActiveModal
->>>>>>> 473098a (Fix: resolvendo conflitos)
-=======
-    private  asignTaskByUserService: AsignTaskByUserService,
-    private activeModal: NgbActiveModal
->>>>>>> 473098a36bf05a40a9a1e985c7f223012df7436a
+    private activeModal: NgbActiveModal,
   ) { 
     this.taskForm = this.formBuilder.group({
       taskTitle: ['', Validators.required],
