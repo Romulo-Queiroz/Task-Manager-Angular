@@ -4,6 +4,10 @@
   <a href="https://wakatime.com/badge/github/Romulo-Queiroz/Task-Manager-Frontend"><img align="center" src="https://wakatime.com/badge/github/Romulo-Queiroz/Task-Manager-Frontend.svg" alt="wakatime"></a>
   <p>Visão Geral do Tempo Investido</p>
 </div>
+
+#Sobre o projeto
+* visualize como está o andamento do desenvolvimento das páginas <a href="./VISUALIZAR.md"> aqui </a>
+
 <br />
 
 # Iniciando o projeto
