@@ -9,11 +9,11 @@
 <p> Página de login do sistema, onde o usuário pode fazer login. </p>
 
 # Lista de Tarefas a Fazer
-<img src="./PaginasImg/listaTarefas.png" alt="Lista de Tarefas" width="100%"/>
+<img src="./PaginasImg/ListaTarefas.png" alt="Lista de Tarefas" width="100%"/>
 <p> Página onde o usuário pode visualizar todas as tarefas designadas a ela. </p>
 
 # Lista Tarefas Feitas
-<img src="./PaginasImg/listaTarefasFeitas.png" alt="Lista de Tarefas Feitas" width="100%"/>
+<img src="./PaginasImg/ListaTarefasFeitas.png" alt="Lista de Tarefas Feitas" width="100%"/>
 <p> Página onde o usuário pode visualizar todas as tarefas feitas por ela. </p>
 
 # Dashboard 
