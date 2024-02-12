@@ -1,20 +1,23 @@
-<div class="container bg-light">    
-    <h2>Tarefas feitas</h2>
-    <div>
-      <ul class="myUl mb-3">
-        <li *ngFor="let tarefa of tarefasConcluidas" [ngClass]="{'done': tarefa.done}">
-          <!-- Verifica se tarefa.done é igual a true -->
-          <ng-container *ngIf="tarefa.done === true">
-            <p class="id">#{{ tarefa.taskid }}</p>
-            <h4 class="tittle">{{ tarefa.taskTitle }}</h4>
-            <p class="description"><strong>Description:</strong> {{ tarefa.taskDescription }}</p>
-            <p class="category"><strong>Categoria:</strong> {{ tarefa.categoryName }}</p>
-            <div class="button-group">
-              <button class="btn btn-danger" (click)="openConfirmationModal(tarefa.id)">Deletar</button>            
-            </div>
-          </ng-container>
-        </li>
-    </ul>
+
+<div class="container bg-dark">
+  <h2>Tarefas a serem feitas</h2>
+  <div class="mb-3">
+      <button class="btn btn-primary" (click)="openCreateTaskModal()">Criar Tarefa</button>
+  </div>
+  <div class="row">
+      <div class="col-md-4 mb-3" *ngFor="let tarefa of tarefasConcluidas" [ngClass]="{'done': tarefa.done == true}">
+          <div class="card bg-secondary bg-gradient">
+              <div class="card-body">              
+                  <p class="card-text">#{{ tarefa.taskId }}</p>
+                  <h5 class="card-title">{{ tarefa.taskTitle }}</h5>
+                  <p class="card-text"><strong>Description:</strong> {{ tarefa.taskDescription }}</p>
+                  <p class="card-text"><strong>Categoria:</strong> {{ tarefa.categoryName }}</p>
+                  <div class="button-group">
+                    <button class="btn btn-danger" (click)="openConfirmationModal(tarefa.id)">Deletar</button>            
+                  </div>         
+              </div>
+          </div>
+      </div>
   </div>
 </div>
   
