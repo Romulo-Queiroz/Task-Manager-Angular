@@ -1,17 +1,17 @@
-<div *ngIf="user.isLogged == false"class="centercontents">
-  <form [formGroup]="loginForm" (ngSubmit)="onSubmit()"a  class="form-login">
+<div *ngIf="user.isLogged == false" class="container-fluid bg-dark d-flex justify-content-center align-items-center" style="height: 100vh;">
+  <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="form-login">
     <div class="form-group">
-      <label for="username">Usuário</label>
-      <input type="text" formControlName="username" required ="form-control">
-      <div *ngIf="showError" class ="alert alert-danger dangerTitle">
-        <p>Usuário ou Senha incorreta</p>
+      <label for="username" class="text-secondary">Usuário</label>
+      <input type="text" formControlName="username" class="form-control" required>
+      <div *ngIf="showError" class="alert alert-danger dangerTitle">
+        <p class="text-secondary">Usuário ou Senha incorreta</p>
       </div>
     </div>
     <div class="form-group">
-      <label for="password">Senha</label>
-      <input type="password" formControlName="password" required ="form-control">
-      <div *ngIf="showError" class ="alert alert-danger dangerTitle">
-        <p>Usuário ou Senha incorreta</p>
+      <label for="password" class="text-secondary">Senha</label>
+      <input type="password" formControlName="password" class="form-control" required>
+      <div *ngIf="showError" class="alert alert-danger dangerTitle">
+        <p class="text-secondary">Usuário ou Senha incorreta</p>
       </div>
     </div>
     <button type="submit" class="btn btn-primary">Entrar</button>
@@ -22,10 +22,10 @@
 <div *ngIf="user.isLogged == true && tarefasNaoFeitas > 0" class="container p-5">
   <div class="row justify-content-center align-items-center">
     <div class="col-md-6 text-center">
-      <p class="blockquote d-block">
+      <p class="blockquote d-block text-secondary">
         Olá <strong>{{user.username}}</strong>, vimos que você possui {{tarefasNaoFeitas}} tarefas não feitas.
       </p>
-      <p class="blockquote d-block">
+      <p class="blockquote d-block text-secondary">
         Caso queira sair do nosso sistema e voltar para terminar suas tarefas depois, clique no botão abaixo.
       </p>
       <button type="button" class="btn btn-primary" (click)="logout()">Sair</button>
@@ -36,10 +36,10 @@
 <div *ngIf="user.isLogged == true && tarefasNaoFeitas < 0" class="container p-5">
   <div class="row justify-content-center align-items-center">
     <div class="col-md-6 text-center">
-      <p class="blockquote d-block">
+      <p class="blockquote d-block text-secondary">
         Olá <strong>{{user.username}}</strong>
       </p>
-      <p class="blockquote d-block">
+      <p class="blockquote d-block text-secondary">
         Caso queira sair do nosso sistema e voltar para terminar suas tarefas depois, clique no botão abaixo.
       </p>
       <button type="button" class="btn btn-primary" (click)="logout()">Sair</button>
