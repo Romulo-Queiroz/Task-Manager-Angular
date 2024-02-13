@@ -1,1 +1,23 @@
-<p>create-user works!</p>
+<div class="modal-dialog">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h5 class="modal-title">Criar Usuário</h5>
+      
+    </div>
+    <div class="modal-body">
+      <form [formGroup]="userForm">
+        <div class="mb-3">
+          <label for="userName" class="form-label">Usuário</label>
+          <input type="text" class="form-control" id="userName" placeholder="Digite o nome do usuário" formControlName="userName">
+        </div>
+        <div class="mb-3">
+          <label for="password" class="form-label">Senha</label>
+          <input type="password" class="form-control" id="password" placeholder="Digite a senha do usuário" formControlName="password">
+        </div>
+      </form>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-secondary" (click)="closeModal()">Cancelar</button>
+      <button type="submit" class="btn btn-primary" (click)="createUser()">Criar Usuário</button>
+    </div>
+  </div>
