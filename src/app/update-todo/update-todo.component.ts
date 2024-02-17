@@ -32,9 +32,11 @@ updateTask() {
     const task = this.taskForm.getRawValue();
     this.updateCreateTasksService.updateTask(this.taskId, task).subscribe(
       response => {
-        console.log('Tarefa atualizada com sucesso:', response);
-        this.closeModal();
-        window.location.reload();
+        if(response) {
+          console.log('Tarefa atualizada com sucesso:', response);
+          this.closeModal();
+          window.location.reload();
+        }
       },
       error => {
         console.error('Erro ao atualizar a tarefa:', error);
