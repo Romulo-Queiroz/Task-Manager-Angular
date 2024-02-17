@@ -51,6 +51,7 @@ export class TaskDoneComponent {
   openConfirmationModal(taskId: number) {
     const modalRef = this.modalService.open(ConfirmationModalComponent);
     modalRef.componentInstance.taskId = taskId;
+    console.log('TaskId:', taskId);
   }
  
 }
