@@ -18,7 +18,7 @@ export class AppComponent {
   ngOnInit() {
     const token = localStorage.getItem('jwtToken');
     if (token && this.authService.isTokenValid(token)) {
-      this.user.isLogged = true;
+      // this.user.isLogged = true;
     } else {
       this.authService.logout();
     }
