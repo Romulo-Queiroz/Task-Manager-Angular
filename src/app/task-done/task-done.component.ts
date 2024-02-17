@@ -31,7 +31,8 @@ export class TaskDoneComponent {
        this.listTaskByUser.listTaskByUserId(this.user.id).subscribe(
           (response) => {
             if (response && response.value && Array.isArray(response.value)) {
-              this.tarefasConcluidas = response.value;
+              this.tarefasConcluidas = response.value.filter((task: any) => task.done);
+              console.log('Tarefas concluídas:', this.tarefasConcluidas);
             } else {
               console.error('Resposta do servidor inválida:', response);
             }
@@ -50,6 +51,7 @@ export class TaskDoneComponent {
   openConfirmationModal(taskId: number) {
     const modalRef = this.modalService.open(ConfirmationModalComponent);
     modalRef.componentInstance.taskId = taskId;
+    console.log('TaskId:', taskId);
   }
  
 }

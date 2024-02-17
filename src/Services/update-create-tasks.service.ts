@@ -2,11 +2,12 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { environment } from './enviroment';
-import { TodoModel } from '../Models/Todo.model';
+import { taskModel } from 'src/Models/taskModel';
 import { map, catchError } from 'rxjs/operators';
 import { throwError } from 'rxjs';
 import { userModel } from 'src/Models/user.model';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { TodoModel } from 'src/Models/Todo.model';
 
 @Injectable({
   providedIn: 'root',
@@ -46,19 +47,13 @@ createTask(newTask: any): Observable<any> {
   updateTask(taskId: number, updatedTaskData: any): Observable<any> {
     const url = `${environment.apiBaseUrl}/Edit/${taskId}`;
 
-    const taskModel: TodoModel = {
+    const taskModel: taskModel = {
       title: updatedTaskData.title,
-      description: updatedTaskData.description,
-      done: updatedTaskData.done,
-      CategorieTaskId: updatedTaskData.CategorieTaskId,
-      userId: updatedTaskData.userId,
+      description: updatedTaskData.description
     };
 
-    return this.http.put(url, taskModel).pipe(
-      map((response) => response),
-      catchError((error) => {
-        return throwError(error);
-      })
-    );
+    return this.http.put(url, taskModel).pipe((Response) => {
+      return Response;
+    });
   }
 }
