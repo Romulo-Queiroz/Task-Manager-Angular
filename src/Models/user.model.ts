@@ -4,4 +4,5 @@ export class userModel {
   password?: string = '';
   isLogged?: boolean = false;
   isAdmin?: boolean = false;
+  profilePicture: string = '';
 }

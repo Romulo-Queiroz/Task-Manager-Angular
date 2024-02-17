@@ -36,18 +36,20 @@ export class CreateTaskComponent {
     const newTask = {
       Title: this.taskForm.value.taskTitle,
       Description: this.taskForm.value.taskDescription,
-      Done: false,
-      CreatedAt: new Date(),
-      CategorieTaskId: this.taskForm.value.taskCategory,
+      CategorieTaskId: this.taskForm.value.taskCategory
     };
 
     this.updateCreateTasksService.createTask(newTask).subscribe(
       (response) => {
-        this.modalService.dismissAll();
-        this.closeModal();
+        if(response){
+          this.modalService.dismissAll();
+          this.closeModal();
+        }else {
+          console.error('Erro ao criar a tarefa:', response);
+        }
       },
       (error) => {
-        console.log(error);
+        console.error('Erro ao criar a tarefa:', error);
       }
     );
   }

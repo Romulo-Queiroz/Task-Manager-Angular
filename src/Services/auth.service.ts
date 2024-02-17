@@ -36,7 +36,8 @@ export class AuthService {
             id: this.user.user.id,
             username: this.user.user.username,
             isAdmin: this.user.user.isAdmin,
-            isLogged: true
+            isLogged: true,
+            profilePicture: this.user.user.profilePicture
           };
          
           localStorage.setItem('user', JSON.stringify(userData));

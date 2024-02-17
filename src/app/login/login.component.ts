@@ -40,7 +40,7 @@ ngOnInit() {
     this.user = JSON.parse(user);
     this.ListTaskByUser();
   }
-
+console.log(this.user);
 }
   
   closeModal() {
@@ -52,7 +52,8 @@ ngOnInit() {
       let user = {
         username: this.loginForm.value.username,
         password: this.loginForm.value.password,
-        isLogged: false
+        isLogged: false,
+        profilePicture: ''
       };
   
       this.authService.authenticate(user).subscribe(

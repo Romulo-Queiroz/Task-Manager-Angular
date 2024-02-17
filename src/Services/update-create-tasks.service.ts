@@ -37,12 +37,9 @@ createTask(newTask: any): Observable<any> {
     userId: user.id
   };
 
-  return this.http.post(url, taskModel).pipe(
-    map((response) => response),
-    catchError((error) => {
-      return throwError(error);
-    })
-  );
+  return this.http.post(url, taskModel).pipe((response) => {
+    return response;
+  });
 }
 
 
