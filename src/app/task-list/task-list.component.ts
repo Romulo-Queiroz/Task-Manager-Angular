@@ -39,7 +39,8 @@ export class TaskListComponent implements OnInit {
      this.listTaskByUser.listTaskByUserId(this.user.id).subscribe(
         (response) => {
           if (response && response.value && Array.isArray(response.value)) {
-            this.tasksToDo = response.value;
+            this.tasksToDo = response.value.filter((task) => !task.done);
+            console.log('Tarefas:', this.tasksToDo);
           } else {
             console.error('Resposta do servidor inválida:', response);
           }
